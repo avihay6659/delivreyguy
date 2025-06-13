@@ -1651,8 +1651,9 @@
 
         .testimonials-carousel {
             display: flex;
-            animation: slideTestimonials 20s linear infinite;
+            animation: slideTestimonials 30s linear infinite;
             gap: 2rem;
+            width: calc(700px * 8); /* 8 cards * (350px + 2rem gap) */
         }
 
         @keyframes slideTestimonials {
@@ -1660,7 +1661,7 @@
                 transform: translateX(0);
             }
             100% {
-                transform: translateX(-100%);
+                transform: translateX(-50%); /* Only move half way since we duplicated */
             }
         }
 
@@ -1753,6 +1754,11 @@
 
         /* Mobile adjustments for carousel */
         @media (max-width: 768px) {
+            .testimonials-carousel {
+                animation: slideTestimonials 25s linear infinite;
+                width: calc(320px * 8); /* Adjust for mobile card width */
+            }
+            
             .testimonial-card {
                 min-width: 300px;
                 padding: 2rem;
@@ -1764,6 +1770,11 @@
         }
 
         @media (max-width: 480px) {
+            .testimonials-carousel {
+                animation: slideTestimonials 20s linear infinite;
+                width: calc(300px * 8); /* Adjust for smaller mobile screens */
+            }
+            
             .testimonial-card {
                 min-width: 280px;
                 padding: 1.5rem;
