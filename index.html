@@ -1510,27 +1510,7 @@
                 line-height: 1.3;
             }
 
-            /* Quick Order Form */
-            .order-form {
-                padding: 2rem;
-                margin: 0 1rem;
-            }
 
-            .form-group {
-                margin-bottom: 1.5rem;
-            }
-
-            .form-group input,
-            .form-group select,
-            .form-group textarea {
-                padding: 1.2rem;
-                font-size: 1rem;
-            }
-
-            .submit-btn {
-                padding: 1.3rem;
-                font-size: 1.1rem;
-            }
 
             /* Footer */
             .footer {
@@ -1628,10 +1608,7 @@
                 margin-bottom: 0.25rem;
             }
 
-            .order-form {
-                padding: 1.5rem;
-                margin: 0 0.5rem;
-            }
+
 
             .cta-button {
                 padding: 1rem 2rem;
@@ -1693,9 +1670,7 @@
                 padding: 1.2rem;
             }
 
-            .order-form {
-                padding: 1.2rem;
-            }
+
 
             .cta-button {
                 padding: 0.9rem 1.8rem;
@@ -1777,7 +1752,7 @@
                 <li><a href="#services" class="nav-link">שירותים</a></li>
                 <li><a href="#testimonials" class="nav-link">המלצות</a></li>
                 <li><a href="#contact" class="nav-link">צור קשר</a></li>
-                <li><a href="#quick-order" class="nav-link nav-cta">הזמן עכשיו</a></li>
+                <li><a href="#contact" class="nav-link nav-cta">הזמן עכשיו</a></li>
             </ul>
             <button class="mobile-menu-toggle" id="mobile-toggle">
                 ☰
@@ -1798,7 +1773,7 @@
                 ומחירים הוגנים.
             </p>
             <div class="hero-buttons">
-                <a href="#quick-order" class="cta-button pulse">
+                <a href="#contact" class="cta-button pulse">
                     ⚡ התחל הזמנה עכשיו
                 </a>
                 <a href="#services" class="cta-button secondary">
@@ -2150,78 +2125,13 @@
         </div>
     </section>
 
-    <!-- Quick Order Section -->
-    <section class="quick-order-section" id="quick-order">
-        <div class="container">
-            <h2 class="section-title" style="color: white;">📋 הזמנה מהירה</h2>
-            <form class="order-form" id="orderForm">
-                <div class="form-group">
-                    <label for="serviceType">סוג השירות</label>
-                    <select id="serviceType" name="serviceType" required>
-                        <option value="">בחר סוג שירות</option>
-                        <option value="flowers">משלוח פרחים</option>
-                        <option value="documents">מסמכים וחבילות</option>
-                        <option value="mail">שירותי דואר</option>
-                        <option value="bank">הפקדות בנק</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="deliveryType">סוג המשלוח</label>
-                    <select id="deliveryType" name="deliveryType" required>
-                        <option value="">בחר סוג משלוח</option>
-                        <option value="regular">רגיל (24 שעות) - ₪15</option>
-                        <option value="fast">מהיר (4-6 שעות) - ₪25</option>
-                        <option value="express">אקספרס (שעה) - ₪35</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="pickupAddress">כתובת איסוף</label>
-                    <input type="text" id="pickupAddress" name="pickupAddress" placeholder="הכנס כתובת איסוף" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="deliveryAddress">כתובת מסירה</label>
-                    <input type="text" id="deliveryAddress" name="deliveryAddress" placeholder="הכנס כתובת מסירה" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="pickupTime">זמן איסוף מועדף</label>
-                    <input type="datetime-local" id="pickupTime" name="pickupTime" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="customerName">שם מלא</label>
-                    <input type="text" id="customerName" name="customerName" placeholder="הכנס שם מלא" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="customerPhone">טלפון</label>
-                    <input type="tel" id="customerPhone" name="customerPhone" placeholder="050-123-4567" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="notes">הערות נוספות</label>
-                    <textarea id="notes" name="notes" rows="3" placeholder="פרטים נוספים, הוראות מיוחדות..."></textarea>
-                </div>
-
-                <button type="submit" class="submit-btn">
-                    📤 שלח הזמנה
-                </button>
-                
-                <div class="loading-spinner" id="loadingSpinner"></div>
-            </form>
-        </div>
-    </section>
-
     <!-- CTA Section -->
     <section class="cta-section">
         <div class="container">
             <h2>🟩 מוכנים להתחיל?</h2>
             <p>הזמינו עכשיו ותהנו משירות מהיר ואמין</p>
             <div class="cta-buttons">
-                <a href="#quick-order" class="cta-button" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                <a href="#contact" class="cta-button" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
                     הזמן משלוח עכשיו
                 </a>
                 <a href="#contact" class="cta-button" style="background: linear-gradient(135deg, #28a745 0%, #20c997 100%);">
@@ -2379,44 +2289,12 @@
                             entry.target.style.animationDelay = `${index * 0.2}s`;
                             entry.target.classList.add('stagger-animation');
                         }
-                        
-                        if (entry.target.classList.contains('process-step')) {
-                            entry.target.style.animationDelay = `${index * 0.25}s`;
-                            entry.target.classList.add('stagger-animation');
-                        }
                     }, index * 100);
                 }
             });
         }, observerOptions);
 
-        // Form submission
-        const orderForm = document.getElementById('orderForm');
-        const loadingSpinner = document.getElementById('loadingSpinner');
 
-        orderForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Show loading
-            loadingSpinner.style.display = 'block';
-            
-            // Get form data
-            const formData = new FormData(orderForm);
-            const orderData = {};
-            
-            for (let [key, value] of formData.entries()) {
-                orderData[key] = value;
-            }
-            
-            // Simulate API call
-            setTimeout(() => {
-                loadingSpinner.style.display = 'none';
-                showToast('ההזמנה נשלחה בהצלחה! נחזור אליכם בהקדם', 'success');
-                orderForm.reset();
-                
-                // In real implementation, you would send this to your backend
-                console.log('Order submitted:', orderData);
-            }, 2000);
-        });
 
         // Contact functions
         function openWhatsApp() {
@@ -2432,7 +2310,7 @@
         }
 
         function scrollToOrder() {
-            document.getElementById('quick-order').scrollIntoView({
+            document.getElementById('contact').scrollIntoView({
                 behavior: 'smooth',
                 block: 'start'
             });
