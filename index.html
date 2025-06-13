@@ -342,49 +342,7 @@
             transform: translateY(-5px) scale(1.02);
         }
 
-        /* Quick Stats Section */
-        .stats-section {
-            background: rgba(26, 32, 44, 0.95);
-            padding: 4rem 2rem;
-            color: white;
-            backdrop-filter: blur(10px);
-        }
 
-        .stats-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-            text-align: center;
-        }
-
-        .stat-item {
-            padding: 2rem;
-            background: rgba(255,255,255,0.05);
-            border-radius: 15px;
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255,255,255,0.1);
-            transition: all 0.3s ease;
-        }
-
-        .stat-item:hover {
-            transform: translateY(-10px);
-            background: rgba(255,255,255,0.1);
-        }
-
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 800;
-            color: #f093fb;
-            margin-bottom: 0.5rem;
-            display: block;
-        }
-
-        .stat-label {
-            font-size: 1.1rem;
-            opacity: 0.9;
-        }
         
         .services-section {
             padding: 8rem 2rem;
@@ -1012,6 +970,17 @@
             gap: 2rem;
         }
 
+        .testimonial-stars {
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .star {
+            color: #ffd700;
+            font-size: 1.2rem;
+            margin: 0 0.1rem;
+        }
+
         /* Mobile adjustments for carousel */
         @media (max-width: 768px) {
             .testimonial-card {
@@ -1383,23 +1352,7 @@
                 text-align: center;
             }
 
-            /* Stats Section */
-            .stats-section {
-                padding: 3rem 1rem;
-            }
 
-            .stats-container {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 2rem;
-            }
-
-            .stat-number {
-                font-size: 2.5rem;
-            }
-
-            .stat-label {
-                font-size: 1rem;
-            }
 
             /* Sections */
             .services-section,
@@ -1491,18 +1444,6 @@
                 padding: 2rem;
             }
 
-
-
-            /* Testimonials */
-            .testimonials-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .testimonial-card {
-                padding: 2rem;
-            }
-
             /* Contact */
             .contact-info {
                 flex-direction: column;
@@ -1534,8 +1475,6 @@
                 line-height: 1.3;
             }
 
-
-
             /* Footer */
             .footer {
                 padding: 3rem 1rem 2rem;
@@ -1546,8 +1485,6 @@
                 gap: 2rem;
                 text-align: center;
             }
-
-
         }
 
         @media (max-width: 480px) {
@@ -1570,18 +1507,7 @@
                 letter-spacing: 1px;
             }
 
-            .stats-container {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
 
-            .stat-item {
-                padding: 1.5rem;
-            }
-
-            .stat-number {
-                font-size: 2.2rem;
-            }
 
             .hero-content {
                 padding: 1.5rem 0.5rem;
@@ -1625,8 +1551,6 @@
                 margin-bottom: 0.25rem;
             }
 
-
-
             .cta-button {
                 padding: 1rem 2rem;
                 font-size: 0.95rem;
@@ -1640,8 +1564,6 @@
             .contact-item span:first-child {
                 font-size: 1.3rem;
             }
-
-
 
             /* Navigation adjustments */
             .nav-menu {
@@ -1680,8 +1602,6 @@
             .pricing-card {
                 padding: 1.2rem;
             }
-
-
 
             .cta-button {
                 padding: 0.9rem 1.8rem;
@@ -1727,8 +1647,6 @@
         .stagger-animation {
             animation: fadeInStagger 0.6s ease-out forwards;
         }
-
-
     </style>
 </head>
 <body>
@@ -1774,27 +1692,7 @@
         </div>
     </section>
 
-    <!-- Quick Stats -->
-    <section class="stats-section">
-        <div class="stats-container">
-            <div class="stat-item">
-                <span class="stat-number" data-count="500">0</span>
-                <span class="stat-label">משלוחים מוצלחים החודש</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-number" data-count="98">0</span>
-                <span class="stat-label">% שביעות רצון לקוחות</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-number" data-count="24">0</span>
-                <span class="stat-label">שעות פעילות ביום</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-number" data-count="15">0</span>
-                <span class="stat-label">דקות זמן תגובה ממוצע</span>
-            </div>
-        </div>
-    </section>
+
 
     <!-- Services Section -->
     <section class="services-section" id="services">
@@ -2223,24 +2121,6 @@
             });
         });
 
-        // Counter animation for stats
-        function animateCounter(element, target, duration = 2000) {
-            let start = 0;
-            const increment = target / (duration / 16);
-            
-            function updateCounter() {
-                start += increment;
-                if (start < target) {
-                    element.textContent = Math.floor(start);
-                    requestAnimationFrame(updateCounter);
-                } else {
-                    element.textContent = target;
-                }
-            }
-            
-            updateCounter();
-        }
-
         // Intersection Observer for animations
         const observerOptions = {
             threshold: 0.1,
@@ -2253,12 +2133,6 @@
                     // Stagger animations for better effect
                     setTimeout(() => {
                         entry.target.classList.add('animate');
-                        
-                        // Animate counters when stats section is visible
-                        if (entry.target.classList.contains('stat-number')) {
-                            const target = parseInt(entry.target.getAttribute('data-count'));
-                            animateCounter(entry.target, target);
-                        }
                         
                         // Add specific animation classes based on element type
                         if (entry.target.classList.contains('service-card')) {
@@ -2280,8 +2154,6 @@
             });
         }, observerOptions);
 
-
-
         // Contact functions
         function openWhatsApp() {
             window.open('https://wa.me/972548912636?text=היי! אני מעוניין להזמין שירות משלוחים. אשמח לפרטים נוספים 🚚', '_blank');
@@ -2294,8 +2166,6 @@
         function sendEmail() {
             window.open('mailto:info@delivery.co.il?subject=פנייה מהאתר');
         }
-
-
 
         // Toast notification function
         function showToast(message, type = 'success') {
@@ -2312,7 +2182,7 @@
         // Initialize animations when page loads
         document.addEventListener('DOMContentLoaded', function() {
             // Add animate-on-scroll class to all elements that should animate
-            const animateElements = document.querySelectorAll('.service-card, .feature-item, .why-us-item, .process-step, .stat-number, .testimonial-card, .pricing-card');
+            const animateElements = document.querySelectorAll('.service-card, .feature-item, .why-us-item, .process-step, .testimonial-card, .pricing-card');
             
             animateElements.forEach(element => {
                 element.classList.add('animate-on-scroll');
@@ -2354,12 +2224,6 @@
                     card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
                 });
             });
-
-            // Set minimum pickup time to current time
-            const pickupTimeInput = document.getElementById('pickupTime');
-            const now = new Date();
-            now.setMinutes(now.getMinutes() + 30); // Minimum 30 minutes from now
-            pickupTimeInput.min = now.toISOString().slice(0, 16);
         });
 
         // Enhanced CTA button interactions
@@ -2416,41 +2280,6 @@
         document.addEventListener('click', function(e) {
             if (!navMenu.contains(e.target) && !mobileToggle.contains(e.target)) {
                 navMenu.classList.remove('active');
-            }
-        });
-
-        // Update pricing based on delivery type selection
-        document.getElementById('deliveryType').addEventListener('change', function() {
-            const selectedOption = this.options[this.selectedIndex];
-            if (selectedOption.value) {
-                showToast(`בחרת: ${selectedOption.text}`, 'success');
-            }
-        });
-
-        // Form validation and improvements
-        const inputs = document.querySelectorAll('input[required], select[required]');
-        inputs.forEach(input => {
-            input.addEventListener('blur', function() {
-                if (!this.value) {
-                    this.style.borderColor = '#dc3545';
-                } else {
-                    this.style.borderColor = 'rgba(255,255,255,0.3)';
-                }
-            });
-        });
-
-        // Phone number formatting
-        document.getElementById('customerPhone').addEventListener('input', function(e) {
-            let value = e.target.value.replace(/\D/g, '');
-            if (value.length > 0) {
-                if (value.length <= 3) {
-                    value = value;
-                } else if (value.length <= 6) {
-                    value = value.substring(0, 3) + '-' + value.substring(3);
-                } else {
-                    value = value.substring(0, 3) + '-' + value.substring(3, 6) + '-' + value.substring(6, 10);
-                }
-                e.target.value = value;
             }
         });
     </script>
