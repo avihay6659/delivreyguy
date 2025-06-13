@@ -258,6 +258,18 @@
             margin-bottom: 2.5rem;
             font-weight: 300;
             animation: slideInRight 1s ease-out 0.9s both;
+            position: relative;
+        }
+
+        .hero-subtitle::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.7), transparent);
         }
         
         .hero-description {
@@ -1744,6 +1756,7 @@
             <h1 class="hero-title">
                 חסד משלוחים
             </h1>
+            <div class="company-tagline">בכל זמן ובכל מקום</div>
             <h2 class="hero-subtitle">ברוכים הבאים!</h2>
             <h2 class="hero-subtitle">השירות הכי מהיר ואמין בעיר</h2>
             <p class="hero-description">
