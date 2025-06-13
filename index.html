@@ -3,288 +3,181 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>משלוחים מהירים - הזמן עכשיו</title>
+    <title>משלוחים מהירים - שירות משלוחים פרימיום</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
-        
-        :root {
-            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-            --glass-bg: rgba(255, 255, 255, 0.25);
-            --glass-border: rgba(255, 255, 255, 0.18);
-            --text-primary: #2d3748;
-            --text-secondary: #4a5568;
-            --text-light: #718096;
-            --shadow-subtle: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            --shadow-medium: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            --shadow-large: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-            --shadow-xl: 0 35px 60px -12px rgba(0, 0, 0, 0.3);
-        }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
+        
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: 
-                linear-gradient(135deg, rgba(102, 126, 234, 0.7) 0%, rgba(118, 75, 162, 0.7) 100%),
-                url('background.png');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            background-repeat: no-repeat;
-            min-height: 100vh;
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #1a202c;
+            scroll-behavior: smooth;
             overflow-x: hidden;
-            position: relative;
         }
 
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 25% 25%, rgba(120, 119, 198, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
-            z-index: -1;
-            /* Ensure it works on mobile */
-            -webkit-transform: translateZ(0);
-            transform: translateZ(0);
+        /* Advanced Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
         }
 
-        .hero-container {
+        @keyframes slideInLeft {
+            0% { opacity: 0; transform: translateX(-50px); }
+            100% { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes slideInRight {
+            0% { opacity: 0; transform: translateX(50px); }
+            100% { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes scaleIn {
+            0% { opacity: 0; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200px 0; }
+            100% { background-position: calc(200px + 100%) 0; }
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 53%, 80%, 100% { transform: translate3d(0,0,0); }
+            40%, 43% { transform: translate3d(0,-30px,0); }
+            70% { transform: translate3d(0,-15px,0); }
+            90% { transform: translate3d(0,-4px,0); }
+        }
+        
+        .hero-section {
+            background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #f5576c);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            position: relative;
-            padding: 40px 20px;
-        }
-
-        /* Floating elements removed */
-
-        .main-content {
-            position: relative;
-            z-index: 10;
             text-align: center;
-            max-width: 1200px;
-            width: 100%;
-        }
-
-        .header-section {
-            margin-bottom: 40px;
-            animation: slideInFromTop 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        @keyframes slideInFromTop {
-            0% {
-                opacity: 0;
-                transform: translateY(-60px) scale(0.9);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
-
-        .logo-container {
             position: relative;
-            display: inline-block;
-            margin-bottom: 25px;
-        }
-
-        .logo-background {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 160px;
-            height: 160px;
-            background: conic-gradient(
-                from 0deg,
-                rgba(102, 126, 234, 0.3) 0deg,
-                rgba(118, 75, 162, 0.3) 120deg,
-                rgba(240, 147, 251, 0.3) 240deg,
-                rgba(102, 126, 234, 0.3) 360deg
-            );
-            border-radius: 50%;
-            filter: blur(40px);
-            animation: logoGlow 4s ease-in-out infinite;
-        }
-
-        @keyframes logoGlow {
-            0%, 100% { opacity: 0.6; transform: translate(-50%, -50%) scale(1) rotate(0deg); }
-            50% { opacity: 0.9; transform: translate(-50%, -50%) scale(1.1) rotate(180deg); }
-        }
-
-        .logo {
-            position: relative;
-            width: 120px;
-            height: 120px;
-            background: var(--glass-bg);
-            backdrop-filter: blur(30px);
-            border: 2px solid var(--glass-border);
-            border-radius: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 50px;
-            margin: 0 auto;
-            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            box-shadow: var(--shadow-xl);
             overflow: hidden;
         }
-
-        .logo::before {
+        
+        .hero-section::before {
             content: '';
             position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: conic-gradient(
-                from 0deg,
-                transparent 0deg,
-                rgba(255, 255, 255, 0.4) 90deg,
-                transparent 180deg,
-                rgba(255, 255, 255, 0.4) 270deg,
-                transparent 360deg
-            );
-            border-radius: 30px;
-            animation: borderRotate 3s linear infinite;
-            z-index: -1;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" stitchTiles="stitch"/></filter></defs><rect width="100%" height="100%" filter="url(%23noiseFilter)" opacity="0.02"/></svg>') no-repeat center center;
+            background-size: cover;
         }
 
-        @keyframes borderRotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        .hero-section::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(255,255,255,0.03) 10deg, transparent 20deg);
+            animation: float 20s ease-in-out infinite;
         }
-
-        .logo:hover {
-            transform: translateY(-15px) rotate(5deg) scale(1.05);
-            box-shadow: var(--shadow-xl), 0 0 60px rgba(102, 126, 234, 0.4);
+        
+        .hero-content {
+            z-index: 10;
+            max-width: 900px;
+            padding: 3rem;
+            animation: fadeInUp 1.2s ease-out;
         }
-
-        .brand-section {
-            margin-bottom: 50px;
-        }
-
-        .brand-name {
-            font-size: 72px;
-            font-weight: 900;
-            background: linear-gradient(135deg, #ffffff 0%, #f7fafc 50%, #edf2f7 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 15px;
-            letter-spacing: -2px;
-            text-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-            animation: textShimmer 3s ease-in-out infinite;
-            line-height: 1.0;
-        }
-
-        @keyframes textShimmer {
-            0%, 100% { filter: brightness(1); }
-            50% { filter: brightness(1.2); }
-        }
-
-        .brand-tagline {
-            font-size: 20px;
-            color: rgba(255, 255, 255, 0.85);
-            font-weight: 400;
-            text-transform: none;
-            letter-spacing: 1px;
-            margin-bottom: 40px;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .welcome-section {
-            margin-bottom: 50px;
-            animation: slideInFromBottom 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s both;
-        }
-
-        @keyframes slideInFromBottom {
-            0% {
-                opacity: 0;
-                transform: translateY(60px) scale(0.9);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
-
-        .welcome-title {
-            font-size: 36px;
-            font-weight: 600;
-            color: white;
-            margin-bottom: 20px;
-            line-height: 1.2;
-            letter-spacing: -0.5px;
-            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        
+        .company-tagline {
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 300;
+            animation: slideInLeft 1s ease-out 0.3s both;
             position: relative;
         }
 
-        .welcome-title::after {
+        .company-tagline::after {
             content: '';
             position: absolute;
-            bottom: -10px;
+            bottom: -8px;
             left: 50%;
             transform: translateX(-50%);
-            width: 100px;
-            height: 4px;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
-            border-radius: 2px;
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.7), transparent);
         }
-
-        .welcome-subtitle {
-            font-size: 24px;
+        
+        .hero-title {
+            font-size: 4.5rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 2rem;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            line-height: 1.1;
+            animation: scaleIn 1s ease-out 0.6s both;
+            letter-spacing: -2px;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.8rem;
             color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 20px;
+            margin-bottom: 2.5rem;
             font-weight: 300;
-            line-height: 1.3;
+            animation: slideInRight 1s ease-out 0.9s both;
         }
-
-        .welcome-description {
-            font-size: 18px;
-            color: rgba(255, 255, 255, 0.7);
-            line-height: 1.6;
-            max-width: 700px;
-            margin: 0 auto;
-            font-weight: 300;
+        
+        .hero-description {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 3.5rem;
+            line-height: 1.8;
+            animation: fadeInUp 1s ease-out 1.2s both;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
-
-        .cta-section {
-            animation: slideInFromBottom 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.6s both;
-        }
-
+        
         .cta-button {
-            position: relative;
-            background: var(--glass-bg);
-            backdrop-filter: blur(30px);
-            border: 2px solid var(--glass-border);
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
             color: white;
-            font-size: 20px;
-            font-weight: 700;
-            padding: 20px 50px;
-            border-radius: 50px;
+            padding: 1.5rem 4rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 60px;
             cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             text-decoration: none;
             display: inline-flex;
             align-items: center;
-            gap: 15px;
-            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            box-shadow: var(--shadow-large);
+            gap: 0.8rem;
+            box-shadow: 0 15px 35px rgba(240, 147, 251, 0.4), 0 5px 15px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+            animation: bounce 2s ease-out 1.5s both;
             text-transform: uppercase;
             letter-spacing: 1px;
-            overflow: hidden;
         }
 
         .cta-button::before {
@@ -294,522 +187,909 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transition: left 0.8s ease;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 25px 50px rgba(240, 147, 251, 0.6), 0 10px 25px rgba(0,0,0,0.2);
         }
 
         .cta-button:hover::before {
             left: 100%;
         }
 
-        .cta-button:hover {
-            transform: translateY(-12px) scale(1.05);
-            box-shadow: var(--shadow-xl), 0 0 80px rgba(255, 255, 255, 0.3);
-            background: rgba(255, 255, 255, 0.35);
-            border-color: rgba(255, 255, 255, 0.3);
-        }
-
         .cta-button:active {
-            transform: translateY(-8px) scale(1.02);
+            transform: translateY(-5px) scale(1.02);
+        }
+        
+        .services-section {
+            padding: 8rem 2rem;
+            background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+            position: relative;
         }
 
-        .button-icon {
-            font-size: 22px;
-            animation: iconPulse 2s ease-in-out infinite;
+        .services-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #e2e8f0, transparent);
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            font-size: 3.2rem;
+            color: #1a202c;
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+        
+        .section-title::after {
+            content: '';
+            width: 120px;
+            height: 5px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 3px;
+            box-shadow: 0 3px 10px rgba(102, 126, 234, 0.3);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 5rem;
+        }
+        
+        .service-card {
+            background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 
+                0 20px 40px rgba(0,0,0,0.08),
+                0 1px 3px rgba(0,0,0,0.1),
+                inset 0 1px 0 rgba(255,255,255,0.9);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(255,255,255,0.2);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
         }
 
-        @keyframes iconPulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.2); }
-        }
-
-        .decorative-elements {
+        .service-card::before {
+            content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 100%;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 
+                0 40px 80px rgba(0,0,0,0.12),
+                0 10px 30px rgba(102, 126, 234, 0.1),
+                inset 0 1px 0 rgba(255,255,255,1);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+        
+        .service-title {
+            font-size: 1.5rem;
+            color: #1a202c;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+        
+        .service-description {
+            color: #4a5568;
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+        
+        .features-section {
+            padding: 8rem 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
             overflow: hidden;
-            z-index: 2;
-            pointer-events: none;
         }
 
-        .particle {
+        .features-section::before {
+            content: '';
             position: absolute;
-            width: 3px;
-            height: 3px;
-            background: rgba(255, 255, 255, 0.6);
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="0.5" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            margin-bottom: 4rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .feature-item {
+            text-align: center;
+            padding: 2.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(145deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .feature-item:hover::before {
+            opacity: 1;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        
+        .feature-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: #ffffff;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover .feature-icon {
+            transform: scale(1.2) rotate(10deg);
+        }
+        
+        .feature-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+        
+        .feature-description {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        
+        .why-us-section {
+            padding: 8rem 2rem;
+            background: linear-gradient(180deg, #1a202c 0%, #2d3748 100%);
+            color: white;
+            position: relative;
+        }
+
+        .why-us-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.15) 0%, transparent 50%);
+        }
+        
+        .why-us-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .why-us-item {
+            text-align: center;
+            padding: 3rem;
+            background: linear-gradient(145deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+            border-radius: 20px;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .why-us-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .why-us-item:hover::before {
+            left: 100%;
+        }
+
+        .why-us-item:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+            border-color: rgba(255,255,255,0.3);
+        }
+        
+        .process-section {
+            padding: 8rem 2rem;
+            background: linear-gradient(180deg, #f7fafc 0%, #edf2f7 100%);
+            position: relative;
+        }
+        
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .process-steps::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #cbd5e0, transparent);
+            z-index: 1;
+        }
+        
+        .process-step {
+            text-align: center;
+            padding: 3rem;
+            background: linear-gradient(145deg, #ffffff 0%, #f7fafc 100%);
+            border-radius: 25px;
+            box-shadow: 
+                0 20px 40px rgba(0,0,0,0.1),
+                inset 0 1px 0 rgba(255,255,255,0.9);
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 2;
+            border: 1px solid rgba(255,255,255,0.8);
+        }
+
+        .process-step:hover {
+            transform: translateY(-15px) scale(1.05);
+            box-shadow: 
+                0 30px 60px rgba(0,0,0,0.15),
+                0 10px 30px rgba(102, 126, 234, 0.1),
+                inset 0 1px 0 rgba(255,255,255,1);
+        }
+        
+        .step-number {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            width: 70px;
+            height: 70px;
             border-radius: 50%;
-            animation: particleFloat 12s infinite linear;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 2rem;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+            transition: all 0.3s ease;
+            position: relative;
         }
 
-        @keyframes particleFloat {
-            0% {
-                transform: translateY(100vh) rotate(0deg) scale(0);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-                transform: translateY(90vh) rotate(36deg) scale(1);
-            }
-            90% {
-                opacity: 1;
-                transform: translateY(10vh) rotate(324deg) scale(1);
-            }
-            100% {
-                transform: translateY(-10vh) rotate(360deg) scale(0);
-                opacity: 0;
-            }
+        .step-number::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
-        /* Mobile specific fixes */
+        .process-step:hover .step-number {
+            transform: scale(1.1) rotate(10deg);
+        }
+
+        .process-step:hover .step-number::before {
+            opacity: 0.3;
+        }: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 0 auto 1rem;
+        }
+        
+        .cta-section {
+            padding: 8rem 2rem;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 50%, #ff6b6b 100%);
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><defs><pattern id="dots" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100%" height="100%" fill="url(%23dots)"/></svg>');
+        }
+
+        .cta-section::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, rgba(255,255,255,0.05), transparent);
+            animation: float 25s linear infinite;
+        }
+        
+        .cta-section h2 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .cta-section p {
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            opacity: 0.95;
+            position: relative;
+            z-index: 2;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .contact-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(180deg, #1a202c 0%, #2d3748 100%);
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 0%, rgba(102, 126, 234, 0.1) 0%, transparent 70%);
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.2rem;
+            padding: 1.5rem;
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .contact-item span:first-child {
+            font-size: 1.5rem;
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* Scroll animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .animate-on-scroll.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .animate-on-scroll.animate-left {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .animate-on-scroll.animate-right {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .animate-on-scroll.animate-scale {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
         @media (max-width: 768px) {
-            body {
-                background: 
-                    linear-gradient(135deg, rgba(102, 126, 234, 0.7) 0%, rgba(118, 75, 162, 0.7) 100%),
-                    url('background.png') !important;
-                background-size: cover !important;
-                background-position: center !important;
-                background-attachment: scroll;
-                background-repeat: no-repeat !important;
+            .hero-title {
+                font-size: 3rem;
             }
             
-            .hero-container {
-                background: 
-                    linear-gradient(135deg, rgba(102, 126, 234, 0.7) 0%, rgba(118, 75, 162, 0.7) 100%),
-                    url('background.png') !important;
-                background-size: cover !important;
-                background-position: center !important;
-                background-attachment: scroll;
-                background-repeat: no-repeat !important;
-                text-align: center;
-                padding: 40px 15px;
+            .hero-subtitle {
+                font-size: 1.4rem;
             }
             
-            .main-content {
-                text-align: center;
-                width: 100%;
-                max-width: 100%;
+            .services-grid {
+                grid-template-columns: 1fr;
             }
             
-            .header-section {
-                margin-bottom: 50px;
-                animation: mobileSlideInTop 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            .contact-info {
+                flex-direction: column;
+                gap: 2rem;
             }
-            
-            .welcome-section {
-                margin-bottom: 60px;
-                animation: mobileSlideInRight 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s both;
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
             }
-            
-            .cta-section {
-                animation: mobileSlideInBottom 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.6s both;
+
+            .section-title {
+                font-size: 2.5rem;
             }
-            
-            @keyframes mobileSlideInTop {
-                0% {
-                    opacity: 0;
-                    transform: translateY(-80px) scale(0.8);
-                }
-                100% {
-                    opacity: 1;
-                    transform: translateY(0) scale(1);
-                }
+
+            .process-steps::before {
+                display: none;
             }
-            
-            @keyframes mobileSlideInRight {
-                0% {
-                    opacity: 0;
-                    transform: translateX(60px) scale(0.9);
-                }
-                100% {
-                    opacity: 1;
-                    transform: translateX(0) scale(1);
-                }
-            }
-            
-            @keyframes mobileSlideInBottom {
-                0% {
-                    opacity: 0;
-                    transform: translateY(60px) scale(0.8);
-                }
-                100% {
-                    opacity: 1;
-                    transform: translateY(0) scale(1);
-                }
-            }
-            
-            .brand-section {
-                text-align: center;
-            }
-            
-            .brand-name {
-                font-size: 64px;
-                letter-spacing: -2px;
-                color: white !important;
-                background: linear-gradient(135deg, #ffffff 0%, #f7fafc 50%, #edf2f7 100%);
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-                background-clip: text;
-                margin-bottom: 15px;
-                text-align: center;
-                font-weight: 900;
-                line-height: 1.0;
-                text-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-            }
-            
-            .brand-tagline {
-                font-size: 22px;
-                letter-spacing: 1px;
-                margin-bottom: 40px;
-                color: rgba(255, 255, 255, 0.85) !important;
-                text-align: center;
-                font-weight: 400;
-                text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            }
-            
-            .welcome-title {
-                font-size: 32px;
-                letter-spacing: -0.5px;
-                margin-bottom: 25px;
-                color: white !important;
-                text-align: center;
-                line-height: 1.2;
-                font-weight: 600;
-                text-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            }
-            
-            .welcome-subtitle {
-                font-size: 28px;
-                margin-bottom: 25px;
-                color: rgba(255, 255, 255, 0.9) !important;
-                text-align: center;
-                line-height: 1.2;
-                font-weight: 300;
-                padding: 0 10px;
-            }
-            
-            .welcome-description {
-                font-size: 22px;
-                line-height: 1.5;
-                color: rgba(255, 255, 255, 0.7) !important;
-                text-align: center;
-                padding: 0 10px;
-                max-width: 100%;
-                margin: 0 auto;
-                font-weight: 300;
-            }
-            
-            .cta-button {
-                font-size: 22px;
-                padding: 24px 55px;
-                gap: 15px;
-                background: rgba(255, 255, 255, 0.25) !important;
-                color: white !important;
-                border: 2px solid rgba(255, 255, 255, 0.18) !important;
-                margin-top: 15px;
-                font-weight: 700;
-            }
-            
-        /* Floating shapes CSS removed */
         }
 
-        @media (max-width: 480px) {
-            body {
-                background: 
-                    linear-gradient(135deg, rgba(102, 126, 234, 0.7) 0%, rgba(118, 75, 162, 0.7) 100%),
-                    url('background.png') !important;
-                background-size: cover !important;
-                background-position: center !important;
-                background-attachment: scroll;
-                background-repeat: no-repeat !important;
-            }
-            
-            .hero-container {
-                background: 
-                    linear-gradient(135deg, rgba(102, 126, 234, 0.7) 0%, rgba(118, 75, 162, 0.7) 100%),
-                    url('background.png') !important;
-                background-size: cover !important;
-                background-position: center !important;
-                background-attachment: scroll;
-                background-repeat: no-repeat !important;
-                padding: 35px 12px;
-                text-align: center;
-            }
-            
-            .main-content {
-                text-align: center;
-                width: 100%;
-            }
-            
-            .header-section {
-                animation: mobileSlideInTop 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-                margin-bottom: 45px;
-            }
-            
-            .welcome-section {
-                animation: mobileSlideInRight 2.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.4s both;
-                margin-bottom: 55px;
-            }
-            
-            .cta-section {
-                animation: mobileSlideInBottom 2.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.8s both;
-            }
-            
-            .brand-name {
-                font-size: 56px;
-                color: white !important;
-                background: linear-gradient(135deg, #ffffff 0%, #f7fafc 50%, #edf2f7 100%);
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-                background-clip: text;
-                text-align: center;
-                margin-bottom: 12px;
-                font-weight: 900;
-                letter-spacing: -2px;
-                line-height: 1.0;
-                text-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-            }
-            
-            .brand-tagline {
-                color: rgba(255, 255, 255, 0.85) !important;
-                font-size: 18px;
-                letter-spacing: 1px;
-                text-align: center;
-                margin-bottom: 35px;
-                font-weight: 400;
-                text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            }
-            
-            .welcome-title {
-                font-size: 28px;
-                line-height: 1.2;
-                color: white !important;
-                text-align: center;
-                margin-bottom: 22px;
-                font-weight: 600;
-                letter-spacing: -0.5px;
-                text-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            }
-            
-            .welcome-subtitle {
-                font-size: 24px;
-                color: rgba(255, 255, 255, 0.9) !important;
-                text-align: center;
-                margin-bottom: 22px;
-                line-height: 1.2;
-                font-weight: 300;
-                padding: 0 8px;
-            }
-            
-            .welcome-description {
-                font-size: 19px;
-                max-width: 100%;
-                color: rgba(255, 255, 255, 0.7) !important;
-                text-align: center;
-                line-height: 1.5;
-                padding: 0 8px;
-                margin: 0 auto;
-                font-weight: 300;
-            }
-            
-            .cta-button {
-                font-size: 20px;
-                padding: 22px 50px;
-                background: rgba(255, 255, 255, 0.25) !important;
-                color: white !important;
-                border: 2px solid rgba(255, 255, 255, 0.18) !important;
-                margin-top: 20px;
-                font-weight: 700;
-                gap: 15px;
-            }
-            
-            .button-icon {
-                font-size: 22px;
-            }
-            
-        /* Mobile floating shapes removed */
+        /* Loading animation */
+        @keyframes fadeInStagger {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
 
-        /* Desktop optimization - ensure everything fits in viewport */
-        @media (min-width: 1024px) {
-            .hero-container {
-                padding: 20px;
-                justify-content: center;
-            }
-            
-            .main-content {
-                max-width: 1000px;
-            }
-            
-            .welcome-title {
-                font-size: 42px;
-                margin-bottom: 25px;
-            }
-            
-            .welcome-subtitle {
-                font-size: 26px;
-                margin-bottom: 20px;
-            }
-            
-            .welcome-description {
-                font-size: 19px;
-                max-width: 750px;
-            }
-            
-            .cta-button {
-                font-size: 22px;
-                padding: 22px 55px;
-            }
+        .stagger-animation {
+            animation: fadeInStagger 0.6s ease-out forwards;
         }
+    </style>
     </style>
 </head>
 <body>
-    <div class="hero-container">
-        <!-- Decorative particles -->
-        <div class="decorative-elements" id="particles-container"></div>
-
-        <div class="main-content">
-            <!-- Header with branding -->
-            <header class="header-section">
-                <div class="brand-section">
-                    <h2 class="brand-name">חסד משלוחים</h2>
-                    <p class="brand-tagline">בכל זמן ובכל מקום</p>
-                </div>
-            </header>
-
-            <!-- Welcome section -->
-            <section class="welcome-section">
-                <h1 class="welcome-title">ברוכים הבאים!</h1>
-                <p class="welcome-subtitle">השירות הכי מהיר ואמין בעיר</p>
-                <p class="welcome-description">
-                    אנחנו כאן כדי להביא לכם הכל עד הבית בזמן הכי קצר. 
-                    משלוחים מקצועיים, שירות אדיב, ומחירים הוגנים.
-                </p>
-            </section>
-
-            <!-- Call to action -->
-            <section class="cta-section">
-                <button class="cta-button" onclick="startOrder()">
-                    התחל הזמנה עכשיו
-                    <span class="button-icon">⚡</span>
-                </button>
-            </section>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <div class="company-tagline">משלוחים מהירים</div>
+            <h1 class="hero-title">ברוכים הבאים!</h1>
+            <h2 class="hero-subtitle">השירות הכי מהיר ואמין בעיר</h2>
+            <p class="hero-description">
+                אנחנו כאן כדי להביא לכם הכל עד דלת הבית במהירה הרבי, משלוחים מקצועיים, שירות אדיב,
+                ומחירים הוגנים.
+            </p>
+            <a href="#services" class="cta-button pulse">
+                ⚡ התחל הזמנה עכשיו
+            </a>
         </div>
-    </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section" id="services">
+        <div class="container">
+            <h2 class="section-title">השירותים שלנו</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🌸</div>
+                    <h3 class="service-title">משלוחים לחנויות פרחים</h3>
+                    <p class="service-description">
+                        איסוף והובלת זרי פרחים ועדכונים שוטפים על מצב המשלוח.
+                        מתאים למשלוחים ללקוחות פרטיים ואירועים.
+                    </p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">📦</div>
+                    <h3 class="service-title">שליחויות למסמכים וחבילות</h3>
+                    <p class="service-description">
+                        מסמכים חשובים, חוזים, חבילות עד 20 ק"ג – עם אישור מסירה.
+                        שליחות רגילה או אקספרס (תוך שעה–שעתיים באזור הפעילות).
+                    </p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">📮</div>
+                    <h3 class="service-title">שירותי דואר לעסקים</h3>
+                    <p class="service-description">
+                        איסוף פריטי דואר מהעסק ושליחתם לסניף הדואר או תיבת הדואר.
+                        גם שירותי איסוף דברי דואר מהסניף והבאתם לעסק.
+                    </p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">🏦</div>
+                    <h3 class="service-title">הפקדת כספים ושקים בבנקים</h3>
+                    <p class="service-description">
+                        שליחות דיסקרטית, באחריות מלאה ועם תיעוד מסירה.
+                        שירות מותאם לבעלי עסקים קטנים שלא מספיקים להגיע לבנק.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="container">
+            <h2 class="section-title">🕐 בחרו את זמן המשלוח ואופן המסירה</h2>
+            <p style="text-align: center; font-size: 1.4rem; margin-bottom: 4rem; color: #4a5568; position: relative; z-index: 2;">
+                המערכת שלנו מאפשרת לכם לבחור:
+            </p>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">🕒</div>
+                    <h3 class="feature-title">זמן האיסוף</h3>
+                    <p class="feature-description">מיידי או מתוזמן לפי הצורך שלכם</p>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">📍</div>
+                    <h3 class="feature-title">נקודת המסירה</h3>
+                    <p class="feature-description">עסק, בית, סניف, או תיבה</p>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">🚗</div>
+                    <h3 class="feature-title">סוג השליחות</h3>
+                    <p class="feature-description">רגילה / מהיום להיום / אקספרס</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Us Section -->
+    <section class="why-us-section">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">🔐 למה לבחור בנו?</h2>
+            <div class="why-us-grid">
+                <div class="why-us-item">
+                    <div class="feature-icon" style="color: white;">👨‍💼</div>
+                    <h3 class="feature-title" style="color: white;">שירות אישי ומיידי</h3>
+                    <p style="color: rgba(255,255,255,0.9);">בלי מוקדים, בלי בלבולים</p>
+                </div>
+                
+                <div class="why-us-item">
+                    <div class="feature-icon" style="color: white;">✅</div>
+                    <h3 class="feature-title" style="color: white;">שליחים קבועים ואמינים</h3>
+                    <p style="color: rgba(255,255,255,0.9);">צוות מקצועי ואמין</p>
+                </div>
+                
+                <div class="why-us-item">
+                    <div class="feature-icon" style="color: white;">📱</div>
+                    <h3 class="feature-title" style="color: white;">מעקב אחרי כל משלוח</h3>
+                    <p style="color: rgba(255,255,255,0.9);">עדכונים בזמן אמת</p>
+                </div>
+                
+                <div class="why-us-item">
+                    <div class="feature-icon" style="color: white;">🛡️</div>
+                    <h3 class="feature-title" style="color: white;">ביטוח בסיסי</h3>
+                    <p style="color: rgba(255,255,255,0.9);">לכל חבילה ומשלוח</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process-section">
+        <div class="container">
+            <h2 class="section-title">📲 איך זה עובד?</h2>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h3>בוחרים את סוג השליחות</h3>
+                    <p>בחירה מהירה וקלה מהאפשרויות הזמינות</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h3>קובעים מועד ושעה</h3>
+                    <p>תזמון מדויק לפי הנוחות שלכם</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h3>השליח מגיע</h3>
+                    <p>ואתם מעודכנים כל הדרך עד המסירה</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>🟩 מוכנים להתחיל?</h2>
+            <p>הזמינו עכשיו ותהנו משירות מהיר ואמין</p>
+            <div class="cta-buttons">
+                <a href="#contact" class="cta-button" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                    הזמן משלוח עכשיו
+                </a>
+                <a href="#contact" class="cta-button" style="background: linear-gradient(135deg, #28a745 0%, #20c997 100%);">
+                    בדוק זמינות באזור שלך
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">📞 צור קשר</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span>📱</span>
+                    <span>וואטסאפ: 050-123-4567</span>
+                </div>
+                
+                <div class="contact-item">
+                    <span>☎️</span>
+                    <span>טלפון: 03-123-4567</span>
+                </div>
+                
+                <div class="contact-item">
+                    <span>✉️</span>
+                    <span>info@delivery.co.il</span>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <script>
-        // Create animated particles
-        function createParticles() {
-            const container = document.getElementById('particles-container');
-            const particleCount = 15;
-
-            for (let i = 0; i < particleCount; i++) {
-                setTimeout(() => {
-                    const particle = document.createElement('div');
-                    particle.className = 'particle';
-                    particle.style.left = Math.random() * 100 + '%';
-                    particle.style.animationDelay = Math.random() * 12 + 's';
-                    particle.style.animationDuration = (Math.random() * 6 + 8) + 's';
-                    container.appendChild(particle);
-
-                    setTimeout(() => {
-                        if (particle.parentNode) {
-                            particle.parentNode.removeChild(particle);
-                        }
-                    }, 12000);
-                }, i * 300);
-            }
-        }
-
-        // Initialize particles
-        createParticles();
-        setInterval(createParticles, 4000);
-
-        // Advanced parallax effect
-        let mouseX = 0;
-        let mouseY = 0;
-        let targetX = 0;
-        let targetY = 0;
-
-        document.addEventListener('mousemove', (e) => {
-            mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
-            mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
-        });
-
-        function animateParallax() {
-            targetX += (mouseX - targetX) * 0.1;
-            targetY += (mouseY - targetY) * 0.1;
-
-            // Floating shapes removed - only logo parallax remains
-            const logo = document.querySelector('.logo');
-            if (logo) {
-                logo.style.transform = `perspective(1000px) rotateX(${targetY * 8}deg) rotateY(${targetX * 8}deg)`;
-            }
-
-            requestAnimationFrame(animateParallax);
-        }
-        animateParallax();
-
-        // CTA button interaction
-        function startOrder() {
-            const button = event.target.closest('.cta-button');
-            
-            // Create ripple effect
-            const ripple = document.createElement('div');
-            ripple.style.position = 'absolute';
-            ripple.style.borderRadius = '50%';
-            ripple.style.background = 'rgba(255, 255, 255, 0.6)';
-            ripple.style.transform = 'scale(0)';
-            ripple.style.animation = 'ripple 0.6s linear';
-            ripple.style.left = '50%';
-            ripple.style.top = '50%';
-            ripple.style.width = '20px';
-            ripple.style.height = '20px';
-            ripple.style.marginLeft = '-10px';
-            ripple.style.marginTop = '-10px';
-            
-            button.appendChild(ripple);
-            
-            setTimeout(() => {
-                ripple.remove();
-            }, 600);
-
-            // Add ripple animation
-            const style = document.createElement('style');
-            style.textContent = `
-                @keyframes ripple {
-                    to {
-                        transform: scale(4);
-                        opacity: 0;
-                    }
-                }
-            `;
-            document.head.appendChild(style);
-
-            setTimeout(() => {
-                alert('מעבר לדף ההזמנה...');
-            }, 300);
-        }
-
-        // Smooth reveal animations on scroll
+        // Advanced scroll animations
         const observerOptions = {
-            threshold: 0.2,
-            rootMargin: '0px 0px -50px 0px'
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
         };
 
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
+            entries.forEach((entry, index) => {
                 if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0) scale(1)';
+                    // Stagger animations for better effect
+                    setTimeout(() => {
+                        entry.target.classList.add('animate');
+                        
+                        // Add specific animation classes based on element type
+                        if (entry.target.classList.contains('service-card')) {
+                            entry.target.style.animationDelay = `${index * 0.1}s`;
+                            entry.target.classList.add('stagger-animation');
+                        }
+                        
+                        if (entry.target.classList.contains('feature-item')) {
+                            entry.target.style.animationDelay = `${index * 0.15}s`;
+                            entry.target.classList.add('stagger-animation');
+                        }
+                        
+                        if (entry.target.classList.contains('why-us-item')) {
+                            entry.target.style.animationDelay = `${index * 0.2}s`;
+                            entry.target.classList.add('stagger-animation');
+                        }
+                        
+                        if (entry.target.classList.contains('process-step')) {
+                            entry.target.style.animationDelay = `${index * 0.25}s`;
+                            entry.target.classList.add('stagger-animation');
+                        }
+                    }, index * 100);
                 }
             });
         }, observerOptions);
 
-        // Add scroll reveal to elements
-        document.querySelectorAll('.header-section, .welcome-section, .cta-section').forEach(section => {
-            observer.observe(section);
+        // Enhanced smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Initialize animations when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add animate-on-scroll class to all elements that should animate
+            const animateElements = document.querySelectorAll('.service-card, .feature-item, .why-us-item, .process-step');
+            
+            animateElements.forEach(element => {
+                element.classList.add('animate-on-scroll');
+                observer.observe(element);
+            });
+
+            // Add parallax effect to hero section
+            const heroSection = document.querySelector('.hero-section');
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                const parallax = scrolled * 0.5;
+                heroSection.style.transform = `translateY(${parallax}px)`;
+            });
+
+            // Animate section titles
+            const sectionTitles = document.querySelectorAll('.section-title');
+            sectionTitles.forEach(title => {
+                title.classList.add('animate-on-scroll');
+                observer.observe(title);
+            });
+
+            // Add mouse move effect for cards
+            document.querySelectorAll('.service-card, .feature-item, .why-us-item').forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    
+                    const rotateX = (y - centerY) / 10;
+                    const rotateY = (centerX - x) / 10;
+                    
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(0)`;
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
+                });
+            });
+        });
+
+        // Enhanced CTA button interactions
+        document.querySelectorAll('.cta-button').forEach(button => {
+            button.addEventListener('click', function(e) {
+                if (this.getAttribute('href') === '#contact') {
+                    e.preventDefault();
+                    
+                    // Create ripple effect
+                    const ripple = document.createElement('span');
+                    const rect = this.getBoundingClientRect();
+                    const size = Math.max(rect.width, rect.height);
+                    const x = e.clientX - rect.left - size / 2;
+                    const y = e.clientY - rect.top - size / 2;
+                    
+                    ripple.style.width = ripple.style.height = size + 'px';
+                    ripple.style.left = x + 'px';
+                    ripple.style.top = y + 'px';
+                    ripple.style.position = 'absolute';
+                    ripple.style.borderRadius = '50%';
+                    ripple.style.background = 'rgba(255,255,255,0.3)';
+                    ripple.style.transform = 'scale(0)';
+                    ripple.style.animation = 'ripple 0.6s linear';
+                    ripple.style.pointerEvents = 'none';
+                    
+                    this.appendChild(ripple);
+                    
+                    setTimeout(() => {
+                        ripple.remove();
+                    }, 600);
+                    
+                    // Simulate action - in real implementation, this would open contact form or WhatsApp
+                    setTimeout(() => {
+                        alert('🚀 בקרוב נפתח טופס הזמנה מתקדם או נפנה ישירות לוואטסאפ!');
+                    }, 300);
+                }
+            });
+        });
+
+        // Add CSS for ripple animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Add loading animation for page
+        window.addEventListener('load', function() {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease';
+            
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
         });
     </script>
 </body>
