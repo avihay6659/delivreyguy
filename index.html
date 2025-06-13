@@ -884,18 +884,36 @@
             z-index: 2;
         }
 
-        /* Testimonials Section */
+        /* Testimonials Carousel */
         .testimonials-section {
             padding: 8rem 2rem;
             background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+            overflow: hidden;
         }
 
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
+        .testimonials-container {
+            position: relative;
             max-width: 1200px;
             margin: 0 auto;
+        }
+
+        .testimonials-carousel {
+            display: flex;
+            animation: slideTestimonials 20s linear infinite;
+            gap: 2rem;
+        }
+
+        @keyframes slideTestimonials {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        .testimonials-carousel:hover {
+            animation-play-state: paused;
         }
 
         .testimonial-card {
@@ -905,6 +923,8 @@
             box-shadow: 0 15px 35px rgba(0,0,0,0.08);
             position: relative;
             transition: all 0.3s ease;
+            min-width: 350px;
+            flex-shrink: 0;
         }
 
         .testimonial-card::before {
@@ -960,6 +980,42 @@
             margin: 0;
             color: #667eea;
             font-size: 0.9rem;
+        }
+
+        /* Duplicate testimonials for seamless loop */
+        .testimonials-carousel-duplicate {
+            display: flex;
+            gap: 2rem;
+        }
+
+        /* Mobile adjustments for carousel */
+        @media (max-width: 768px) {
+            .testimonial-card {
+                min-width: 300px;
+                padding: 2rem;
+            }
+
+            .testimonial-text {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .testimonial-card {
+                min-width: 280px;
+                padding: 1.5rem;
+            }
+
+            .testimonial-text {
+                font-size: 0.95rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .author-avatar {
+                width: 45px;
+                height: 45px;
+                font-size: 1.1rem;
+            }
         }
         
         .contact-section {
@@ -1999,42 +2055,186 @@
     <section class="testimonials-section" id="testimonials">
         <div class="container">
             <h2 class="section-title">💬 מה הלקוחות שלנו אומרים</h2>
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <p class="testimonial-text">
-                        "השירות הכי מהיר ואמין שהשתמשתי בו! השליח הגיע בדיוק בזמן שהובטח ועדכן אותי כל הדרך. ממליץ בחום!"
-                    </p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">ר</div>
-                        <div class="author-info">
-                            <h4>רחל כהן</h4>
-                            <p>בעלת חנות פרחים</p>
+            <div class="testimonials-container">
+                <div class="testimonials-carousel">
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                        </div>
+                        <p class="testimonial-text">
+                            "השירות הכי מהיר ואמין! השליח הגיע בזמן ועדכן אותי כל הדרך."
+                        </p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">ר</div>
+                            <div class="author-info">
+                                <h4>רחל כהן</h4>
+                                <p>בעלת חנות פרחים</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                
-                <div class="testimonial-card">
-                    <p class="testimonial-text">
-                        "צוות מקצועי שיודע לטפל גם במשלוחים דחופים. השתמשתי בשירות שלהם למסמכים חשובים לבנק והכל עבר חלק!"
-                    </p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">מ</div>
-                        <div class="author-info">
-                            <h4>משה לוי</h4>
-                            <p>בעל עסק</p>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                        </div>
+                        <p class="testimonial-text">
+                            "צוות מקצועי שיודע לטפל במשלוחים דחופים. הכל עבר חלק!"
+                        </p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">מ</div>
+                            <div class="author-info">
+                                <h4>משה לוי</h4>
+                                <p>בעל עסק</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                
-                <div class="testimonial-card">
-                    <p class="testimonial-text">
-                        "השירות הטוב ביותר! מחירים הוגנים, שליחים אמינים ושירות לקוחות מעולה. בהחלט נמשיך להשתמש!"
-                    </p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">ש</div>
-                        <div class="author-info">
-                            <h4>שרה ברק</h4>
-                            <p>לקוחה פרטית</p>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                        </div>
+                        <p class="testimonial-text">
+                            "השירות הטוב ביותר! מחירים הוגנים ושירות לקוחות מעולה."
+                        </p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">ש</div>
+                            <div class="author-info">
+                                <h4>שרה ברק</h4>
+                                <p>לקוחה פרטית</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                        </div>
+                        <p class="testimonial-text">
+                            "הזמנתי משלוח דחוף בלילה והשליח הגיע תוך 45 דקות. מדהים!"
+                        </p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">א</div>
+                            <div class="author-info">
+                                <h4>אבי גולד</h4>
+                                <p>לקוח קבוע</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                        </div>
+                        <p class="testimonial-text">
+                            "שנתיים שאני עובד איתם. אמינות 100%! הכי טובים בתחום."
+                        </p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">ד</div>
+                            <div class="author-info">
+                                <h4>דני רוזן</h4>
+                                <p>מנהל חנות</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                        </div>
+                        <p class="testimonial-text">
+                            "שירות מעולה ומהיר! הפקדתי כספים בבנק והכל בוצע בזמן."
+                        </p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">י</div>
+                            <div class="author-info">
+                                <h4>יוסי חן</h4>
+                                <p>בעל קפה</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Duplicate for seamless loop -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                        </div>
+                        <p class="testimonial-text">
+                            "השירות הכי מהיר ואמין! השליח הגיע בזמן ועדכן אותי כל הדרך."
+                        </p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">ר</div>
+                            <div class="author-info">
+                                <h4>רחל כהן</h4>
+                                <p>בעלת חנות פרחים</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                        </div>
+                        <p class="testimonial-text">
+                            "צוות מקצועי שיודע לטפל במשלוחים דחופים. הכל עבר חלק!"
+                        </p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">מ</div>
+                            <div class="author-info">
+                                <h4>משה לוי</h4>
+                                <p>בעל עסק</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                        </div>
+                        <p class="testimonial-text">
+                            "השירות הטוב ביותר! מחירים הוגנים ושירות לקוחות מעולה."
+                        </p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">ש</div>
+                            <div class="author-info">
+                                <h4>שרה ברק</h4>
+                                <p>לקוחה פרטית</p>
+                            </div>
                         </div>
                     </div>
                 </div>
