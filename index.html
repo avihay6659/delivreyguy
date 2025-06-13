@@ -476,6 +476,7 @@
                         </div>
                     </div>
 
+                    <!-- Additional duplicates for seamless mobile experience -->
                     <div class="testimonial-card">
                         <div class="testimonial-stars">
                             <span class="star">⭐</span>
@@ -485,13 +486,73 @@
                             <span class="star">⭐</span>
                         </div>
                         <p class="testimonial-text">
-                            "השירות הכי טוב שיש! הם הצילו אותי כשהייתי צריך משלוח דחוף בסוף השבוע."
+                            "השירות הכי מהיר ואמין! השליח הגיע בזמן ועדכן אותי כל הדרך."
                         </p>
                         <div class="testimonial-author">
-                            <div class="author-avatar">ל</div>
+                            <div class="author-avatar">ר</div>
                             <div class="author-info">
-                                <h4>לירון כץ</h4>
-                                <p>עורך דין</p>
+                                <h4>רחל כהן</h4>
+                                <p>בעלת חנות פרחים</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                        </div>
+                        <p class="testimonial-text">
+                            "צוות מקצועי שיודע לטפל במשלוחים דחופים. הכל עבר חלק!"
+                        </p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">מ</div>
+                            <div class="author-info">
+                                <h4>משה לוי</h4>
+                                <p>בעל עסק</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                        </div>
+                        <p class="testimonial-text">
+                            "השירות הטוב ביותר! מחירים הוגנים ושירות לקוחות מעולה."
+                        </p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">ש</div>
+                            <div class="author-info">
+                                <h4>שרה ברק</h4>
+                                <p>לקוחה פרטית</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                        </div>
+                        <p class="testimonial-text">
+                            "הזמנתי משלוח דחוף בלילה והשליח הגיע תוך 45 דקות. מדהים!"
+                        </p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">א</div>
+                            <div class="author-info">
+                                <h4>אבי גולד</h4>
+                                <p>לקוח קבוע</p>
                             </div>
                         </div>
                     </div>
@@ -1647,13 +1708,15 @@
             position: relative;
             max-width: 1200px;
             margin: 0 auto;
+            overflow: hidden; /* This is important for mobile */
         }
 
         .testimonials-carousel {
             display: flex;
             animation: slideTestimonials 30s linear infinite;
             gap: 2rem;
-            width: calc(700px * 8); /* 8 cards * (350px + 2rem gap) */
+            width: max-content;
+            transform: translateX(-100vw); /* Start from left side of screen */
         }
 
         @keyframes slideTestimonials {
@@ -1661,7 +1724,7 @@
                 transform: translateX(0);
             }
             100% {
-                transform: translateX(-50%); /* Only move half way since we duplicated */
+                transform: translateX(100vw); /* Move RIGHT - simple and clean */
             }
         }
 
@@ -1676,8 +1739,11 @@
             box-shadow: 0 15px 35px rgba(0,0,0,0.08);
             position: relative;
             transition: all 0.3s ease;
-            min-width: 350px;
+            width: 350px;
             flex-shrink: 0;
+            /* Ensure cards are visible */
+            opacity: 1;
+            visibility: visible;
         }
 
         .testimonial-card::before {
@@ -1755,12 +1821,12 @@
         /* Mobile adjustments for carousel */
         @media (max-width: 768px) {
             .testimonials-carousel {
-                animation: slideTestimonials 25s linear infinite;
-                width: calc(320px * 8); /* Adjust for mobile card width */
+                animation: slideTestimonials 35s linear infinite;
+                gap: 1.5rem;
             }
             
             .testimonial-card {
-                min-width: 300px;
+                width: 300px; /* Fixed width for tablet */
                 padding: 2rem;
             }
 
@@ -1771,12 +1837,12 @@
 
         @media (max-width: 480px) {
             .testimonials-carousel {
-                animation: slideTestimonials 20s linear infinite;
-                width: calc(300px * 8); /* Adjust for smaller mobile screens */
+                animation: slideTestimonials 30s linear infinite;
+                gap: 1rem;
             }
             
             .testimonial-card {
-                min-width: 280px;
+                width: 280px; /* Fixed width for mobile */
                 padding: 1.5rem;
             }
 
@@ -1789,6 +1855,17 @@
                 width: 45px;
                 height: 45px;
                 font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 320px) {
+            .testimonial-card {
+                width: 260px; /* Even smaller for very small screens */
+                padding: 1.2rem;
+            }
+            
+            .testimonial-text {
+                font-size: 0.9rem;
             }
         }
         
