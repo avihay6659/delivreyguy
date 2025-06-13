@@ -157,11 +157,11 @@
         
         .hero-section {
             background: 
-                linear-gradient(rgba(102, 126, 234, 0.8), rgba(118, 75, 162, 0.8), rgba(240, 147, 251, 0.8), rgba(245, 87, 108, 0.8)),
-                url('background.png') center/cover no-repeat;
+                linear-gradient(rgba(102, 126, 234, 0.6), rgba(118, 75, 162, 0.6), rgba(240, 147, 251, 0.6), rgba(245, 87, 108, 0.6)),
+                url('background.png');
             background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
+            background-position: center center;
+            background-repeat: no-repeat;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -171,6 +171,15 @@
             position: relative;
             overflow: hidden;
             padding-top: 80px;
+        }
+
+        /* Mobile background fix */
+        @media (max-width: 768px) {
+            .hero-section {
+                background-attachment: scroll;
+                background-size: cover;
+                min-height: 100vh;
+            }
         }
         
         .hero-section::before {
