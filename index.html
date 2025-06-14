@@ -157,7 +157,7 @@
         
         .hero-section {
             background: 
-                linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(147, 197, 253, 0.05) 50%, rgba(255, 255, 255, 0.2) 100%),
+                linear-gradient(135deg, rgba(15, 23, 42, 0.05) 0%, rgba(30, 41, 59, 0.03) 50%, rgba(255, 255, 255, 0.1) 100%),
                 url('./background.png');
             background-size: cover;
             background-position: center center;
@@ -190,7 +190,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(45deg, rgba(59, 130, 246, 0.03) 0%, rgba(147, 197, 253, 0.02) 100%);
+            background: linear-gradient(45deg, rgba(248, 250, 252, 0.02) 0%, rgba(241, 245, 249, 0.01) 100%);
         }
 
         .hero-section::after {
@@ -200,7 +200,7 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: repeating-conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(255,255,255,0.02) 10deg, transparent 20deg);
+            background: repeating-conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(248, 250, 252, 0.01) 10deg, transparent 20deg);
             animation: float 20s ease-in-out infinite;
         }
         
@@ -345,7 +345,11 @@
 
         .services-section {
             padding: 8rem 2rem;
-            background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 50%, #e0f2fe 100%);
+            background: linear-gradient(180deg, 
+                rgba(248, 250, 252, 0.95) 0%, 
+                rgba(241, 245, 249, 1) 25%, 
+                rgba(248, 250, 252, 1) 75%, 
+                rgba(241, 245, 249, 0.95) 100%);
             position: relative;
             overflow: hidden;
         }
@@ -354,20 +358,22 @@
             content: '';
             position: absolute;
             top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.3), transparent);
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(148, 163, 184, 0.2), transparent);
         }
 
         .services-section::after {
             content: '';
             position: absolute;
             bottom: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.3), transparent);
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(148, 163, 184, 0.2), transparent);
         }
         
         .container {
@@ -406,18 +412,21 @@
         }
         
         .service-card {
-            background: linear-gradient(145deg, rgba(255, 255, 255, 0.95) 0%, rgba(240, 249, 255, 0.9) 100%);
+            background: linear-gradient(145deg, 
+                rgba(255, 255, 255, 0.98) 0%, 
+                rgba(248, 250, 252, 0.95) 50%,
+                rgba(255, 255, 255, 0.98) 100%);
             padding: 3rem;
-            border-radius: 20px;
+            border-radius: 24px;
             box-shadow: 
-                0 20px 40px rgba(59, 130, 246, 0.1),
-                0 1px 3px rgba(59, 130, 246, 0.1),
-                inset 0 1px 0 rgba(255,255,255,0.9);
+                0 20px 40px rgba(71, 85, 105, 0.08),
+                0 8px 16px rgba(71, 85, 105, 0.04),
+                inset 0 1px 0 rgba(255, 255, 255, 0.9);
             transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border: 2px solid rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(148, 163, 184, 0.1);
             position: relative;
             overflow: hidden;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(20px);
         }
 
         .service-card::before {
@@ -426,20 +435,23 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 4px;
-            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            height: 3px;
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a855f7 100%);
             transform: scaleX(0);
-            transition: transform 0.3s ease;
+            transition: transform 0.4s ease;
         }
         
         .service-card:hover {
-            transform: translateY(-15px) scale(1.02);
+            transform: translateY(-12px) scale(1.02);
             box-shadow: 
-                0 40px 80px rgba(59, 130, 246, 0.15),
-                0 10px 30px rgba(59, 130, 246, 0.1),
-                inset 0 1px 0 rgba(255,255,255,1);
-            border-color: rgba(59, 130, 246, 0.3);
-            background: linear-gradient(145deg, rgba(255, 255, 255, 1) 0%, rgba(240, 249, 255, 0.95) 100%);
+                0 32px 64px rgba(71, 85, 105, 0.12),
+                0 16px 32px rgba(71, 85, 105, 0.06),
+                inset 0 1px 0 rgba(255, 255, 255, 1);
+            border-color: rgba(148, 163, 184, 0.2);
+            background: linear-gradient(145deg, 
+                rgba(255, 255, 255, 1) 0%, 
+                rgba(248, 250, 252, 0.98) 50%,
+                rgba(255, 255, 255, 1) 100%);
         }
 
         .service-card:hover::before {
@@ -494,7 +506,12 @@
         
         .features-section {
             padding: 8rem 2rem;
-            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 25%, #1d4ed8 50%, #2563eb 75%, #3b82f6 100%);
+            background: linear-gradient(135deg, 
+                rgba(241, 245, 249, 0.95) 0%, 
+                rgba(226, 232, 240, 1) 25%, 
+                rgba(203, 213, 225, 1) 50%, 
+                rgba(226, 232, 240, 1) 75%, 
+                rgba(241, 245, 249, 0.95) 100%);
             position: relative;
             overflow: hidden;
         }
@@ -507,19 +524,20 @@
             right: 0;
             bottom: 0;
             background: 
-                radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.08) 0%, transparent 50%);
-            opacity: 0.6;
+                radial-gradient(circle at 25% 25%, rgba(99, 102, 241, 0.04) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(139, 92, 246, 0.03) 0%, transparent 50%);
+            opacity: 0.8;
         }
 
         .features-section::after {
             content: '';
             position: absolute;
             top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(148, 163, 184, 0.3), transparent);
         }
         
         .features-grid {
@@ -537,11 +555,11 @@
             background: rgba(255, 255, 255, 0.95);
             border-radius: 20px;
             backdrop-filter: blur(20px);
-            border: 2px solid rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(148, 163, 184, 0.15);
             transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 12px 24px rgba(71, 85, 105, 0.06);
         }
 
         .feature-item::before {
@@ -551,7 +569,9 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(145deg, rgba(255,255,255,0.9), rgba(240, 249, 255, 0.8));
+            background: linear-gradient(145deg, 
+                rgba(255, 255, 255, 0.9), 
+                rgba(248, 250, 252, 0.8));
             opacity: 0;
             transition: opacity 0.3s ease;
         }
@@ -561,41 +581,46 @@
         }
 
         .feature-item:hover {
-            transform: translateY(-10px) scale(1.03);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(71, 85, 105, 0.1);
             background: rgba(255, 255, 255, 1);
-            border-color: rgba(255, 255, 255, 0.6);
+            border-color: rgba(148, 163, 184, 0.25);
         }
         
         .feature-icon {
             font-size: 3.5rem;
             margin-bottom: 1.5rem;
-            color: #1d4ed8;
+            color: #6366f1;
             display: inline-block;
             transition: all 0.3s ease;
         }
 
         .feature-item:hover .feature-icon {
-            transform: scale(1.2) rotate(10deg);
-            color: #2563eb;
+            transform: scale(1.1) rotate(5deg);
+            color: #8b5cf6;
         }
         
         .feature-title {
             font-size: 1.4rem;
             font-weight: 700;
             margin-bottom: 1rem;
-            color: #1e40af;
+            color: #475569;
         }
         
         .feature-description {
-            color: #374151;
+            color: #64748b;
             font-size: 1rem;
             line-height: 1.6;
         }
 
         .why-us-section {
             padding: 8rem 2rem;
-            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 25%, #bae6fd 50%, #e0f2fe 75%, #f0f9ff 100%);
+            background: linear-gradient(135deg, 
+                rgba(226, 232, 240, 0.95) 0%, 
+                rgba(241, 245, 249, 1) 25%, 
+                rgba(248, 250, 252, 1) 50%, 
+                rgba(241, 245, 249, 1) 75%, 
+                rgba(226, 232, 240, 0.95) 100%);
             color: #1a202c;
             position: relative;
             overflow: hidden;
@@ -609,18 +634,19 @@
             right: 0;
             bottom: 0;
             background: 
-                radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(147, 197, 253, 0.06) 0%, transparent 50%);
+                radial-gradient(circle at 20% 80%, rgba(99, 102, 241, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.02) 0%, transparent 50%);
         }
 
         .why-us-section::after {
             content: '';
             position: absolute;
             top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.3), transparent);
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(148, 163, 184, 0.3), transparent);
         }
         
         .why-us-grid {
@@ -637,11 +663,11 @@
             background: rgba(255, 255, 255, 0.95);
             border-radius: 20px;
             backdrop-filter: blur(20px);
-            border: 2px solid rgba(59, 130, 246, 0.15);
+            border: 1px solid rgba(148, 163, 184, 0.12);
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.08);
+            box-shadow: 0 8px 20px rgba(71, 85, 105, 0.05);
         }
 
         .why-us-item::before {
@@ -651,7 +677,10 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(240, 249, 255, 0.8), transparent);
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(248, 250, 252, 0.6), 
+                transparent);
             transition: left 0.5s ease;
         }
 
@@ -660,15 +689,46 @@
         }
 
         .why-us-item:hover {
-            transform: translateY(-10px) scale(1.05);
-            box-shadow: 0 25px 50px rgba(59, 130, 246, 0.15);
-            border-color: rgba(59, 130, 246, 0.3);
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 16px 32px rgba(71, 85, 105, 0.08);
+            border-color: rgba(148, 163, 184, 0.2);
             background: rgba(255, 255, 255, 1);
         }
 
         /* Testimonials Carousel */
         .testimonials-section {
             padding: 8rem 2rem;
+            background: linear-gradient(135deg, 
+                rgba(248, 250, 252, 0.95) 0%, 
+                rgba(255, 255, 255, 1) 25%, 
+                rgba(248, 250, 252, 1) 50%, 
+                rgba(255, 255, 255, 1) 75%, 
+                rgba(248, 250, 252, 0.95) 100%);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .testimonials-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(148, 163, 184, 0.2), transparent);
+        }
+
+        .testimonials-section::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(148, 163, 184, 0.2), transparent);
+        }8rem 2rem;
             background: linear-gradient(135deg, #ffffff 0%, #f8fafc 25%, #f0f9ff 50%, #f8fafc 75%, #ffffff 100%);
             overflow: hidden;
             position: relative;
@@ -723,15 +783,17 @@
         }
 
         .testimonial-card {
-            background: linear-gradient(145deg, rgba(255, 255, 255, 0.98) 0%, rgba(240, 249, 255, 0.95) 100%);
+            background: linear-gradient(145deg, 
+                rgba(255, 255, 255, 1) 0%, 
+                rgba(248, 250, 252, 0.98) 100%);
             padding: 3rem;
             border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.08);
+            box-shadow: 0 12px 28px rgba(71, 85, 105, 0.06);
             position: relative;
             transition: all 0.3s ease;
             width: 350px;
             flex-shrink: 0;
-            border: 2px solid rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(148, 163, 184, 0.08);
             opacity: 1;
             visibility: visible;
         }
@@ -742,16 +804,18 @@
             top: -10px;
             right: 20px;
             font-size: 6rem;
-            color: #3b82f6;
+            color: #6366f1;
             font-family: serif;
-            opacity: 0.2;
+            opacity: 0.15;
         }
 
         .testimonial-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 30px 60px rgba(59, 130, 246, 0.12);
-            border-color: rgba(59, 130, 246, 0.2);
-            background: linear-gradient(145deg, rgba(255, 255, 255, 1) 0%, rgba(240, 249, 255, 0.98) 100%);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(71, 85, 105, 0.08);
+            border-color: rgba(148, 163, 184, 0.15);
+            background: linear-gradient(145deg, 
+                rgba(255, 255, 255, 1) 0%, 
+                rgba(248, 250, 252, 1) 100%);
         }
 
         .testimonial-text {
@@ -857,7 +921,12 @@
         
         .cta-section {
             padding: 8rem 2rem;
-            background: linear-gradient(135deg, #2563eb 0%, #3b82f6 25%, #60a5fa 50%, #3b82f6 75%, #2563eb 100%);
+            background: linear-gradient(135deg, 
+                rgba(99, 102, 241, 0.95) 0%, 
+                rgba(79, 70, 229, 1) 25%, 
+                rgba(67, 56, 202, 1) 50%, 
+                rgba(79, 70, 229, 1) 75%, 
+                rgba(99, 102, 241, 0.95) 100%);
             text-align: center;
             color: white;
             position: relative;
@@ -872,8 +941,8 @@
             right: 0;
             bottom: 0;
             background: 
-                radial-gradient(circle at 30% 70%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 70% 30%, rgba(255, 255, 255, 0.08) 0%, transparent 50%);
+                radial-gradient(circle at 30% 70%, rgba(255, 255, 255, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 70% 30%, rgba(255, 255, 255, 0.06) 0%, transparent 50%);
         }
 
         .cta-section::after {
@@ -883,7 +952,7 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: conic-gradient(from 0deg, transparent, rgba(255,255,255,0.03), transparent);
+            background: conic-gradient(from 0deg, transparent, rgba(255,255,255,0.02), transparent);
             animation: float 25s linear infinite;
         }
         
@@ -891,7 +960,7 @@
             font-size: 3rem;
             margin-bottom: 1.5rem;
             font-weight: 800;
-            text-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            text-shadow: 0 4px 20px rgba(0,0,0,0.15);
             position: relative;
             z-index: 2;
         }
@@ -918,7 +987,10 @@
         
         .contact-section {
             padding: 6rem 2rem;
-            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #f0f9ff 100%);
+            background: linear-gradient(135deg, 
+                rgba(241, 245, 249, 0.95) 0%, 
+                rgba(248, 250, 252, 1) 50%, 
+                rgba(241, 245, 249, 0.95) 100%);
             color: #1a202c;
             text-align: center;
             position: relative;
@@ -932,17 +1004,18 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: radial-gradient(circle at 50% 0%, rgba(59, 130, 246, 0.05) 0%, transparent 70%);
+            background: radial-gradient(circle at 50% 0%, rgba(99, 102, 241, 0.03) 0%, transparent 70%);
         }
 
         .contact-section::after {
             content: '';
             position: absolute;
             top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.3), transparent);
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(148, 163, 184, 0.2), transparent);
         }
         
         .contact-info {
@@ -961,18 +1034,19 @@
             gap: 1rem;
             font-size: 1.2rem;
             padding: 1.5rem;
-            background: rgba(255,255,255,0.8);
-            border-radius: 15px;
+            background: rgba(255,255,255,0.9);
+            border-radius: 16px;
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(59, 130, 246, 0.2);
+            border: 1px solid rgba(148, 163, 184, 0.12);
             transition: all 0.3s ease;
             cursor: pointer;
         }
 
         .contact-item:hover {
-            transform: translateY(-5px);
-            background: rgba(255,255,255,0.95);
-            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.15);
+            transform: translateY(-4px);
+            background: rgba(255,255,255,0.98);
+            box-shadow: 0 12px 24px rgba(71, 85, 105, 0.08);
+            border-color: rgba(148, 163, 184, 0.2);
         }
 
         .contact-item span:first-child {
@@ -981,7 +1055,12 @@
 
         /* Footer */
         .footer {
-            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #1e40af 100%);
+            background: linear-gradient(135deg, 
+                rgba(30, 41, 59, 1) 0%, 
+                rgba(51, 65, 85, 1) 25%, 
+                rgba(71, 85, 105, 1) 50%, 
+                rgba(51, 65, 85, 1) 75%, 
+                rgba(30, 41, 59, 1) 100%);
             color: white;
             padding: 4rem 2rem 2rem;
             text-align: center;
@@ -1579,30 +1658,30 @@
     <!-- Why Us Section -->
     <section class="why-us-section">
         <div class="container">
-            <h2 class="section-title" style="color: #1e40af;">🔐 למה לבחור בנו?</h2>
+            <h2 class="section-title" style="color: #475569;">🔐 למה לבחור בנו?</h2>
             <div class="why-us-grid">
                 <div class="why-us-item">
-                    <div class="feature-icon" style="color: #2563eb;">👨‍💼</div>
-                    <h3 class="feature-title" style="color: #1e40af;">שירות אישי ומיידי</h3>
-                    <p style="color: #4a5568;">בלי מוקדים, בלי בלבולים</p>
+                    <div class="feature-icon" style="color: #6366f1;">👨‍💼</div>
+                    <h3 class="feature-title" style="color: #475569;">שירות אישי ומיידי</h3>
+                    <p style="color: #64748b;">בלי מוקדים, בלי בלבולים</p>
                 </div>
                 
                 <div class="why-us-item">
-                    <div class="feature-icon" style="color: #2563eb;">✅</div>
-                    <h3 class="feature-title" style="color: #1e40af;">שליחים קבועים ואמינים</h3>
-                    <p style="color: #4a5568;">צוות מקצועי ואמין</p>
+                    <div class="feature-icon" style="color: #6366f1;">✅</div>
+                    <h3 class="feature-title" style="color: #475569;">שליחים קבועים ואמינים</h3>
+                    <p style="color: #64748b;">צוות מקצועי ואמין</p>
                 </div>
                 
                 <div class="why-us-item">
-                    <div class="feature-icon" style="color: #2563eb;">📱</div>
-                    <h3 class="feature-title" style="color: #1e40af;">מעקב אחרי כל משלוח</h3>
-                    <p style="color: #4a5568;">עדכונים בזמן אמת</p>
+                    <div class="feature-icon" style="color: #6366f1;">📱</div>
+                    <h3 class="feature-title" style="color: #475569;">מעקב אחרי כל משלוח</h3>
+                    <p style="color: #64748b;">עדכונים בזמן אמת</p>
                 </div>
                 
                 <div class="why-us-item">
-                    <div class="feature-icon" style="color: #2563eb;">🛡️</div>
-                    <h3 class="feature-title" style="color: #1e40af;">ביטוח בסיסי</h3>
-                    <p style="color: #4a5568;">לכל חבילה ומשלוח</p>
+                    <div class="feature-icon" style="color: #6366f1;">🛡️</div>
+                    <h3 class="feature-title" style="color: #475569;">ביטוח בסיסי</h3>
+                    <p style="color: #64748b;">לכל חבילה ומשלוח</p>
                 </div>
             </div>
         </div>
@@ -1734,7 +1813,7 @@
     <!-- Contact Section -->
     <section class="contact-section" id="contact">
         <div class="container">
-            <h2 class="section-title" style="color: #1e40af;">📞 צור קשר</h2>
+            <h2 class="section-title" style="color: #475569;">📞 צור קשר</h2>
             <div class="contact-info">
                 <div class="contact-item" onclick="openWhatsApp()">
                     <span>📱</span>
