@@ -509,13 +509,14 @@
         .feature-item {
             text-align: center;
             padding: 2.5rem;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.9);
             border-radius: 20px;
             backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(59, 130, 246, 0.2);
             transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.1);
         }
 
         .feature-item::before {
@@ -525,7 +526,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(145deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+            background: linear-gradient(145deg, rgba(255,255,255,0.8), rgba(240, 249, 255, 0.6));
             opacity: 0;
             transition: opacity 0.3s ease;
         }
@@ -536,7 +537,9 @@
 
         .feature-item:hover {
             transform: translateY(-10px) scale(1.03);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.2);
+            background: rgba(255, 255, 255, 0.95);
+            border-color: rgba(59, 130, 246, 0.4);
         }
         
         .feature-icon {
@@ -593,13 +596,14 @@
         .why-us-item {
             text-align: center;
             padding: 3rem;
-            background: linear-gradient(145deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+            background: rgba(255, 255, 255, 0.9);
             border-radius: 20px;
             backdrop-filter: blur(20px);
-            border: 1px solid rgba(255,255,255,0.1);
+            border: 2px solid rgba(59, 130, 246, 0.2);
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
             overflow: hidden;
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.1);
         }
 
         .why-us-item::before {
@@ -609,7 +613,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            background: linear-gradient(90deg, transparent, rgba(240, 249, 255, 0.6), transparent);
             transition: left 0.5s ease;
         }
 
@@ -619,8 +623,9 @@
 
         .why-us-item:hover {
             transform: translateY(-10px) scale(1.05);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
-            border-color: rgba(255,255,255,0.3);
+            box-shadow: 0 25px 50px rgba(59, 130, 246, 0.2);
+            border-color: rgba(59, 130, 246, 0.4);
+            background: rgba(255, 255, 255, 0.95);
         }
 
         /* Testimonials Carousel */
