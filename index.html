@@ -555,13 +555,13 @@
         .process-steps {
             display: flex;
             flex-direction: column;
-            gap: 80px;
-            margin-top: 80px;
+            gap: 40px;
+            margin-top: 60px;
             position: relative;
-            max-width: 900px;
+            max-width: 600px;
             margin-left: auto;
             margin-right: auto;
-            padding: 40px 0;
+            padding: 0;
         }
 
         .step {
@@ -577,7 +577,7 @@
                 0 4px 15px rgba(59, 130, 246, 0.1),
                 inset 0 1px 0 rgba(255, 255, 255, 0.8);
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            width: 400px;
+            width: 100%;
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
         }
@@ -606,44 +606,6 @@
                 0 20px 40px rgba(0, 0, 0, 0.15),
                 0 8px 25px rgba(59, 130, 246, 0.25),
                 inset 0 1px 0 rgba(255, 255, 255, 0.9);
-        }
-
-        /* Position steps with animation */
-        .step:nth-child(1) {
-            align-self: flex-end;
-            animation: slideInRight 0.8s ease-out;
-        }
-
-        .step:nth-child(2) {
-            align-self: flex-start;
-            animation: slideInLeft 0.8s ease-out 0.3s both;
-        }
-
-        .step:nth-child(3) {
-            align-self: flex-end;
-            animation: slideInRight 0.8s ease-out 0.6s both;
-        }
-
-        @keyframes slideInRight {
-            from {
-                opacity: 0;
-                transform: translateX(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
         }
 
         .step-number {
@@ -688,46 +650,6 @@
             font-size: 16px;
             line-height: 1.6;
             font-weight: 400;
-        }
-
-        /* Premium curved arrows with SVG-like effect */
-        .step:nth-child(1)::after {
-            content: '';
-            position: absolute;
-            bottom: -50px;
-            left: -80px;
-            width: 120px;
-            height: 100px;
-            background: linear-gradient(135deg, var(--accent-blue), var(--secondary-blue));
-            mask: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 100"><path d="M20 20 Q60 80 100 60" stroke="black" stroke-width="6" fill="none" stroke-linecap="round"/><polygon points="95,55 105,60 95,65" fill="black"/></svg>');
-            mask-size: contain;
-            mask-repeat: no-repeat;
-            animation: arrowFlow 2s ease-in-out infinite;
-        }
-
-        .step:nth-child(2)::after {
-            content: '';
-            position: absolute;
-            bottom: -50px;
-            right: -80px;
-            width: 120px;
-            height: 100px;
-            background: linear-gradient(135deg, var(--accent-blue), var(--secondary-blue));
-            mask: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 100"><path d="M100 20 Q60 80 20 60" stroke="black" stroke-width="6" fill="none" stroke-linecap="round"/><polygon points="25,55 15,60 25,65" fill="black"/></svg>');
-            mask-size: contain;
-            mask-repeat: no-repeat;
-            animation: arrowFlow 2s ease-in-out infinite 1s;
-        }
-
-        @keyframes arrowFlow {
-            0%, 100% {
-                opacity: 0.7;
-                filter: drop-shadow(0 4px 8px rgba(59, 130, 246, 0.3));
-            }
-            50% {
-                opacity: 1;
-                filter: drop-shadow(0 6px 12px rgba(59, 130, 246, 0.5));
-            }
         }
 
         /* Contact Section */
@@ -964,16 +886,8 @@
             }
 
             .step {
-                width: 280px;
+                width: 100%;
                 padding: 20px 12px;
-                align-self: center !important;
-            }
-
-            .step:nth-child(1)::after,
-            .step:nth-child(1)::before,
-            .step:nth-child(2)::after,
-            .step:nth-child(2)::before {
-                display: none;
             }
 
             .step-number {
