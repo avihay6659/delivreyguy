@@ -960,11 +960,25 @@
             color: #ffffff !important;
         }
 
-        /* Focus mode styles */
+        /* Focus mode styles - Enhanced */
         .focus-mode *:focus {
-            outline: 3px solid #ff6b6b !important;
-            outline-offset: 3px !important;
-            box-shadow: 0 0 0 6px rgba(255, 107, 107, 0.3) !important;
+            outline: 4px solid #ff4444 !important;
+            outline-offset: 4px !important;
+            box-shadow: 0 0 0 8px rgba(255, 68, 68, 0.4) !important;
+            border-radius: 8px !important;
+        }
+
+        .focus-mode a:focus,
+        .focus-mode button:focus,
+        .focus-mode .service-card:focus,
+        .focus-mode .feature-card:focus,
+        .focus-mode .contact-card:focus,
+        .focus-mode .nav-link:focus,
+        .focus-mode .mobile-nav-link:focus {
+            outline: 5px solid #ff0000 !important;
+            outline-offset: 5px !important;
+            box-shadow: 0 0 0 10px rgba(255, 0, 0, 0.5) !important;
+            background: rgba(255, 0, 0, 0.1) !important;
         }
 
         /* Dyslexia friendly font */
@@ -1585,16 +1599,38 @@
             btn.classList.toggle('active');
             
             if (body.classList.contains('focus-mode')) {
+                // Add enhanced focus styles
                 const style = document.createElement('style');
                 style.id = 'focus-mode-style';
                 style.textContent = `
-                    *:focus {
-                        outline: 3px solid #ff6b6b !important;
-                        outline-offset: 3px !important;
-                        box-shadow: 0 0 0 6px rgba(255, 107, 107, 0.3) !important;
+                    .focus-mode *:focus {
+                        outline: 4px solid #ff0000 !important;
+                        outline-offset: 4px !important;
+                        box-shadow: 0 0 0 8px rgba(255, 0, 0, 0.5) !important;
+                        border-radius: 6px !important;
+                        background: rgba(255, 0, 0, 0.1) !important;
+                    }
+                    .focus-mode a:focus,
+                    .focus-mode button:focus,
+                    .focus-mode .service-card:focus,
+                    .focus-mode .cta-primary:focus,
+                    .focus-mode .nav-link:focus {
+                        outline: 6px solid #ff0000 !important;
+                        outline-offset: 6px !important;
+                        box-shadow: 0 0 0 12px rgba(255, 0, 0, 0.6) !important;
                     }
                 `;
                 document.head.appendChild(style);
+                
+                // Make all interactive elements focusable
+                const focusableElements = document.querySelectorAll('a, button, .service-card, .feature-card, .contact-card, .step');
+                focusableElements.forEach(el => {
+                    if (!el.hasAttribute('tabindex')) {
+                        el.setAttribute('tabindex', '0');
+                    }
+                });
+                
+                console.log('מצב מיקוד הופעל - נסה ללחוץ Tab!');
             } else {
                 const focusStyle = document.getElementById('focus-mode-style');
                 if (focusStyle) focusStyle.remove();
