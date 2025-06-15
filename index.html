@@ -90,6 +90,141 @@
             color: var(--white);
         }
 
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 24px;
+            height: 24px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 1002;
+        }
+
+        .mobile-menu-btn span {
+            width: 24px;
+            height: 2px;
+            background: var(--white);
+            border-radius: 2px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .mobile-menu-btn.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .mobile-menu-btn.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-btn.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 280px;
+            height: 100vh;
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 80px 24px 24px;
+            transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1001;
+            box-shadow: 4px 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .mobile-menu.show {
+            left: 0;
+        }
+
+        .mobile-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .mobile-menu-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-nav-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .mobile-nav-links li {
+            margin-bottom: 8px;
+        }
+
+        .mobile-nav-link {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            padding: 16px 12px;
+            border-radius: 12px;
+            transition: all 0.2s ease;
+        }
+
+        .mobile-nav-link:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(4px);
+        }
+
+        .mobile-nav-link i {
+            font-size: 18px;
+            width: 20px;
+        }
+
+        .mobile-menu-footer {
+            position: absolute;
+            bottom: 24px;
+            left: 24px;
+            right: 24px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .mobile-contact-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            color: var(--white);
+            border: none;
+            border-radius: 12px;
+            padding: 16px;
+            font-weight: 600;
+            font-size: 16px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            margin-bottom: 12px;
+        }
+
+        .mobile-contact-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
         /* Hero Section */
         .hero {
             background: linear-gradient(135deg, var(--light-blue) 0%, var(--white) 100%);
@@ -549,6 +684,10 @@
                 display: none;
             }
 
+            .mobile-menu-btn {
+                display: flex;
+            }
+
             .hero {
                 padding: 80px 0;
             }
@@ -614,15 +753,77 @@
                 <div class="logo">🚚 חסד משלוחים</div>
                 <ul class="nav-links">
                     <li><a href="#services" class="nav-link">שירותים</a></li>
+                    <li><a href="#features" class="nav-link">אפשרויות</a></li>
+                    <li><a href="#why-us" class="nav-link">למה אנחנו</a></li>
                     <li><a href="#process" class="nav-link">איך זה עובד</a></li>
                     <li><a href="#contact" class="nav-link">צור קשר</a></li>
                 </ul>
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="תפריט ניווט">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </nav>
         </div>
     </header>
 
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay" onclick="closeMobileMenu()"></div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <ul class="mobile-nav-links">
+            <li>
+                <a href="#hero" class="mobile-nav-link" onclick="closeMobileMenu()">
+                    <i class="fas fa-home"></i>
+                    דף הבית
+                </a>
+            </li>
+            <li>
+                <a href="#services" class="mobile-nav-link" onclick="closeMobileMenu()">
+                    <i class="fas fa-truck"></i>
+                    השירותים שלנו
+                </a>
+            </li>
+            <li>
+                <a href="#features" class="mobile-nav-link" onclick="closeMobileMenu()">
+                    <i class="fas fa-clock"></i>
+                    זמן ואופן מסירה
+                </a>
+            </li>
+            <li>
+                <a href="#why-us" class="mobile-nav-link" onclick="closeMobileMenu()">
+                    <i class="fas fa-star"></i>
+                    למה לבחור בנו
+                </a>
+            </li>
+            <li>
+                <a href="#process" class="mobile-nav-link" onclick="closeMobileMenu()">
+                    <i class="fas fa-list-ol"></i>
+                    איך זה עובד
+                </a>
+            </li>
+            <li>
+                <a href="#contact" class="mobile-nav-link" onclick="closeMobileMenu()">
+                    <i class="fas fa-envelope"></i>
+                    צור קשר
+                </a>
+            </li>
+        </ul>
+        
+        <div class="mobile-menu-footer">
+            <a href="tel:0548912636" class="mobile-contact-btn">
+                <i class="fas fa-phone"></i>
+                התקשר עכשיו
+            </a>
+            <p style="text-align: center; color: rgba(255, 255, 255, 0.7); font-size: 14px;">
+                זמינים 24/7 לשירותכם
+            </p>
+        </div>
+    </div>
+
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero" id="hero">
         <div class="container">
             <div class="hero-content">
                 <div class="hero-badge">
@@ -699,7 +900,7 @@
     </section>
 
     <!-- Features Section -->
-    <section class="features">
+    <section class="features" id="features">
         <div class="container">
             <div class="section-header">
                 <span class="section-badge">🕐 זמן המשלוח ואופן המסירה</span>
@@ -734,7 +935,7 @@
     </section>
 
     <!-- Why Choose Us -->
-    <section class="services">
+    <section class="services" id="why-us">
         <div class="container">
             <div class="section-header">
                 <span class="section-badge">למה לבחור בנו</span>
@@ -862,6 +1063,31 @@
     </div>
 
     <script>
+        // Mobile Menu Functions
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const overlay = document.getElementById('mobileMenuOverlay');
+            const btn = document.querySelector('.mobile-menu-btn');
+            
+            menu.classList.toggle('show');
+            overlay.classList.toggle('show');
+            btn.classList.toggle('active');
+            
+            // Prevent body scroll when menu is open
+            document.body.style.overflow = menu.classList.contains('show') ? 'hidden' : '';
+        }
+
+        function closeMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const overlay = document.getElementById('mobileMenuOverlay');
+            const btn = document.querySelector('.mobile-menu-btn');
+            
+            menu.classList.remove('show');
+            overlay.classList.remove('show');
+            btn.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
         // Accessibility Functions
         function toggleAccessibilityMenu() {
             const menu = document.getElementById('accessibilityMenu');
@@ -908,16 +1134,22 @@
             }
         });
 
-        // Smooth scrolling for anchor links
+        // Smooth scrolling for anchor links (including mobile menu)
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+                    // Close mobile menu if open
+                    closeMobileMenu();
+                    
+                    // Wait a bit for menu to close, then scroll
+                    setTimeout(() => {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }, 100);
                 }
             });
         });
@@ -930,9 +1162,10 @@
                 toggleAccessibilityMenu();
             }
             
-            // Escape to close accessibility menu
+            // Escape to close menus
             if (e.key === 'Escape') {
                 document.getElementById('accessibilityMenu').classList.remove('show');
+                closeMobileMenu();
             }
         });
 
