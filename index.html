@@ -1111,177 +1111,6 @@
     </style>
 </head>
 <body>
-    <!-- Loading Screen -->
-    <div id="loadingScreen" style="
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(135deg, #0f172a 0%, #1e40af 50%, #3b82f6 100%);
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        z-index: 9999;
-        transition: opacity 0.8s ease, visibility 0.8s ease;
-    ">
-        <!-- Professional Background Pattern -->
-        <div style="
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml,<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 1000 1000&quot;><defs><pattern id=&quot;grid&quot; width=&quot;60&quot; height=&quot;60&quot; patternUnits=&quot;userSpaceOnUse&quot;><path d=&quot;M 60 0 L 0 0 0 60&quot; fill=&quot;none&quot; stroke=&quot;%23ffffff&quot; stroke-width=&quot;0.5&quot; opacity=&quot;0.08&quot;/></pattern></defs><rect width=&quot;100%&quot; height=&quot;100%&quot; fill=&quot;url(%23grid)&quot;/></svg>') center/60px 60px;
-            animation: subtleMove 15s linear infinite;
-        "></div>
-        
-        <!-- Main Loading Content -->
-        <div style="position: relative; z-index: 2; text-align: center;">
-            <!-- Professional Logo -->
-            <div style="
-                width: 140px;
-                height: 140px;
-                background: rgba(255,255,255,0.1);
-                border-radius: 20px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                margin: 0 auto 40px;
-                backdrop-filter: blur(15px);
-                border: 1px solid rgba(255,255,255,0.15);
-                box-shadow: 0 8px 32px rgba(0,0,0,0.1);
-            ">
-                <div style="
-                    font-size: 64px;
-                    color: white;
-                    text-shadow: 0 2px 8px rgba(0,0,0,0.2);
-                ">🚚</div>
-            </div>
-            
-            <!-- Company Name -->
-            <h1 style="
-                color: white;
-                font-size: 42px;
-                font-weight: 600;
-                margin-bottom: 12px;
-                text-shadow: 0 2px 12px rgba(0,0,0,0.2);
-                letter-spacing: -0.5px;
-                animation: fadeInUp 0.8s ease;
-            ">חסד משלוחים</h1>
-            
-            <!-- Professional Tagline -->
-            <p style="
-                color: rgba(255,255,255,0.85);
-                font-size: 16px;
-                margin-bottom: 50px;
-                font-weight: 400;
-                letter-spacing: 0.5px;
-                animation: fadeInUp 0.8s ease 0.2s both;
-            ">שירותי שליחויות מקצועיים ואמינים</p>
-            
-            <!-- Elegant Loading Indicator -->
-            <div style="
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                gap: 8px;
-                animation: fadeInUp 0.8s ease 0.4s both;
-            ">
-                <div style="
-                    width: 8px;
-                    height: 8px;
-                    background: rgba(255,255,255,0.7);
-                    border-radius: 50%;
-                    animation: dotPulse 1.5s infinite 0s;
-                "></div>
-                <div style="
-                    width: 8px;
-                    height: 8px;
-                    background: rgba(255,255,255,0.7);
-                    border-radius: 50%;
-                    animation: dotPulse 1.5s infinite 0.2s;
-                "></div>
-                <div style="
-                    width: 8px;
-                    height: 8px;
-                    background: rgba(255,255,255,0.7);
-                    border-radius: 50%;
-                    animation: dotPulse 1.5s infinite 0.4s;
-                "></div>
-            </div>
-            
-            <!-- Loading Text -->
-            <p style="
-                color: rgba(255,255,255,0.6);
-                font-size: 13px;
-                margin-top: 25px;
-                font-weight: 300;
-                letter-spacing: 1px;
-                animation: fadeInUp 0.8s ease 0.6s both;
-            ">טוען נתונים...</p>
-        </div>
-        
-        <!-- Subtle Corner Elements -->
-        <div style="
-            position: absolute;
-            top: 40px;
-            left: 40px;
-            width: 2px;
-            height: 40px;
-            background: rgba(255,255,255,0.15);
-        "></div>
-        <div style="
-            position: absolute;
-            top: 40px;
-            left: 40px;
-            width: 40px;
-            height: 2px;
-            background: rgba(255,255,255,0.15);
-        "></div>
-        
-        <div style="
-            position: absolute;
-            bottom: 40px;
-            right: 40px;
-            width: 2px;
-            height: 40px;
-            background: rgba(255,255,255,0.15);
-        "></div>
-        <div style="
-            position: absolute;
-            bottom: 40px;
-            right: 40px;
-            width: 40px;
-            height: 2px;
-            background: rgba(255,255,255,0.15);
-        "></div>
-    </div>
-
-    <!-- Add Loading Animations -->
-    <style>
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        @keyframes dotPulse {
-            0%, 80%, 100% { opacity: 0.3; transform: scale(0.8); }
-            40% { opacity: 1; transform: scale(1); }
-        }
-        
-        @keyframes subtleMove {
-            0% { transform: translateX(0px) translateY(0px); }
-            100% { transform: translateX(-60px) translateY(-60px); }
-        }
-        
-        .loading-hidden {
-            opacity: 0 !important;
-            visibility: hidden !important;
-        }
-    </style>
-
     <!-- Header -->
     <header class="header">
         <div class="container">
@@ -1483,97 +1312,26 @@
                 <span class="section-badge">🕐 זמן המשלוח ואופן המסירה</span>
                 <h2 class="section-title">בחרו את האפשרות המתאימה לכם</h2>
             </div>
-            
-            <!-- Tab Buttons -->
-            <div style="display: flex; justify-content: center; gap: 20px; margin: 40px 0; flex-wrap: wrap;">
-                <button onclick="showTabContent('general')" id="tab-general" style="background: #3b82f6; color: white; border: none; padding: 12px 24px; border-radius: 25px; font-weight: 600; cursor: pointer; transition: all 0.3s ease;">
-                    מידע כללי
-                </button>
-                <button onclick="showTabContent('delivery')" id="tab-delivery" style="background: #e2e8f0; color: #64748b; border: none; padding: 12px 24px; border-radius: 25px; font-weight: 600; cursor: pointer; transition: all 0.3s ease;">
-                    זמן האיסוף
-                </button>
-                <button onclick="showTabContent('pickup')" id="tab-pickup" style="background: #e2e8f0; color: #64748b; border: none; padding: 12px 24px; border-radius: 25px; font-weight: 600; cursor: pointer; transition: all 0.3s ease;">
-                    נקודת המסירה
-                </button>
-                <button onclick="showTabContent('tracking')" id="tab-tracking" style="background: #e2e8f0; color: #64748b; border: none; padding: 12px 24px; border-radius: 25px; font-weight: 600; cursor: pointer; transition: all 0.3s ease;">
-                    מעקב ואבטחה
-                </button>
-                <button onclick="showTabContent('hours')" id="tab-hours" style="background: #e2e8f0; color: #64748b; border: none; padding: 12px 24px; border-radius: 25px; font-weight: 600; cursor: pointer; transition: all 0.3s ease;">
-                    שעות פעילות
-                </button>
-            </div>
-
-            <!-- Tab Content -->
-            <div id="tab-content" style="max-width: 800px; margin: 0 auto; background: white; padding: 40px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); min-height: 200px;">
-                
-                <!-- General Info Tab -->
-                <div id="content-general" class="tab-content-item">
-                    <h3 style="color: #0f172a; font-size: 24px; font-weight: 700; margin-bottom: 20px; text-align: center;">
-                        🚚 מידע כללי על השירות
-                    </h3>
-                    <div style="line-height: 1.8; color: #1e293b;">
-                        <p style="margin-bottom: 15px;">✅ <strong>שירות משלוחים מקצועי</strong> למגזר הפרטי והעסקי</p>
-                        <p style="margin-bottom: 15px;">✅ <strong>מעל עשור ניסיון</strong> בתחום השליחויות</p>
-                        <p style="margin-bottom: 15px;">✅ <strong>צוות מיומן ואמין</strong> עם רישיונות מתאימים</p>
-                        <p style="margin-bottom: 15px;">✅ <strong>כיסוי ארצי</strong> - אזור השרון, תל אביב והמרכז</p>
-                        <p style="margin-bottom: 15px;">✅ <strong>ביטוח מלא</strong> על כל המשלוחים</p>
-                    </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🕒</div>
+                    <h4 class="feature-title">זמן האיסוף</h4>
+                    <p class="feature-description">מיידי או מתוזמן לפי הנוחות שלכם</p>
                 </div>
-
-                <!-- Delivery Time Tab -->
-                <div id="content-delivery" class="tab-content-item" style="display: none;">
-                    <h3 style="color: #0f172a; font-size: 24px; font-weight: 700; margin-bottom: 20px; text-align: center;">
-                        ⏰ זמני איסוף ומסירה
-                    </h3>
-                    <div style="line-height: 1.8; color: #1e293b;">
-                        <p style="margin-bottom: 15px;">🚀 <strong>שליחות אקספרס:</strong> תוך שעה-שעתיים באזור הפעילות</p>
-                        <p style="margin-bottom: 15px;">📅 <strong>שליחות יום:</strong> איסוף ומסירה באותו יום עד 18:00</p>
-                        <p style="margin-bottom: 15px;">⏰ <strong>שליחות מתוזמנת:</strong> תיאום מראש לשעה ותאריך נוחים</p>
-                        <p style="margin-bottom: 15px;">🌙 <strong>שירות לילה:</strong> זמין לחירום ומקרים דחופים</p>
-                        <p style="margin-bottom: 15px;">📱 <strong>עדכונים שוטפים:</strong> הודעות SMS/WhatsApp על מצב המשלוח</p>
-                    </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📍</div>
+                    <h4 class="feature-title">נקודת המסירה</h4>
+                    <p class="feature-description">עסק, בית, סניף או תיבת דואר</p>
                 </div>
-
-                <!-- Pickup Points Tab -->
-                <div id="content-pickup" class="tab-content-item" style="display: none;">
-                    <h3 style="color: #0f172a; font-size: 24px; font-weight: 700; margin-bottom: 20px; text-align: center;">
-                        📍 נקודות איסוף ומסירה
-                    </h3>
-                    <div style="line-height: 1.8; color: #1e293b;">
-                        <p style="margin-bottom: 15px;">🏠 <strong>מסירה ביתית:</strong> עד הדלת, עם אישור מסירה</p>
-                        <p style="margin-bottom: 15px;">🏢 <strong>עסקים ומשרדים:</strong> מסירה למזכירות או לנציג מוסמך</p>
-                        <p style="margin-bottom: 15px;">🏦 <strong>בנקים וסניפים:</strong> הפקדות ואיסוף מסמכים</p>
-                        <p style="margin-bottom: 15px;">📮 <strong>סניפי דואר:</strong> שירותי דואר מקצועיים</p>
-                        <p style="margin-bottom: 15px;">🎯 <strong>נקודות אסטרטגיות:</strong> לפי הצורך והנוחות של הלקוח</p>
-                    </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🚗</div>
+                    <h4 class="feature-title">סוג השליחות</h4>
+                    <p class="feature-description">רגילה, מהיום להיום או אקספרס</p>
                 </div>
-
-                <!-- Tracking Tab -->
-                <div id="content-tracking" class="tab-content-item" style="display: none;">
-                    <h3 style="color: #0f172a; font-size: 24px; font-weight: 700; margin-bottom: 20px; text-align: center;">
-                        🔐 מעקב ואבטחה
-                    </h3>
-                    <div style="line-height: 1.8; color: #1e293b;">
-                        <p style="margin-bottom: 15px;">📱 <strong>מעקב בזמן אמת:</strong> GPS לכל הרכבים</p>
-                        <p style="margin-bottom: 15px;">📸 <strong>תיעוד מסירה:</strong> צילום וחתימה דיגיטלית</p>
-                        <p style="margin-bottom: 15px;">🛡️ <strong>ביטוח מקיף:</strong> כיסוי מלא לכל סוגי המשלוחים</p>
-                        <p style="margin-bottom: 15px;">🔒 <strong>שמירה על סודיות:</strong> מסמכים חשובים בביטחון מלא</p>
-                        <p style="margin-bottom: 15px;">📞 <strong>שירות לקוחות:</strong> זמין 24/7 לכל שאלה או עדכון</p>
-                    </div>
-                </div>
-
-                <!-- Hours Tab -->
-                <div id="content-hours" class="tab-content-item" style="display: none;">
-                    <h3 style="color: #0f172a; font-size: 24px; font-weight: 700; margin-bottom: 20px; text-align: center;">
-                        🕐 שעות פעילות ותמחור
-                    </h3>
-                    <div style="line-height: 1.8; color: #1e293b;">
-                        <p style="margin-bottom: 15px;">⏰ <strong>ימי חול:</strong> 07:00 - 20:00 (שירות רגיל)</p>
-                        <p style="margin-bottom: 15px;">📅 <strong>יום שישי:</strong> 07:00 - 14:00 (לפני שבת)</p>
-                        <p style="margin-bottom: 15px;">🌙 <strong>שירות לילה:</strong> 20:00 - 07:00 (בתיאום מראש)</p>
-                        <p style="margin-bottom: 15px;">🎯 <strong>חירום:</strong> זמין 24/7 לשליחויות דחופות</p>
-                        <p style="margin-bottom: 15px;">💰 <strong>תמחור שקוף:</strong> מחירים קבועים ללא הפתעות</p>
-                    </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔐</div>
+                    <h4 class="feature-title">אבטחה ומעקב</h4>
+                    <p class="feature-description">מעקב מלא ועדכונים בזמן אמת</p>
                 </div>
             </div>
         </div>
@@ -1737,43 +1495,6 @@
     </div>
 
     <script>
-        // Loading Screen Management
-        document.addEventListener('DOMContentLoaded', function() {
-            // Hide loading screen after 3.5 seconds
-            setTimeout(function() {
-                const loadingScreen = document.getElementById('loadingScreen');
-                loadingScreen.classList.add('loading-hidden');
-                
-                // Remove loading screen from DOM after animation
-                setTimeout(function() {
-                    loadingScreen.style.display = 'none';
-                }, 800);
-            }, 3500);
-        });
-
-        // Tab functionality for features section
-        function showTabContent(tabName) {
-            // Hide all tab contents
-            const allContents = document.querySelectorAll('.tab-content-item');
-            allContents.forEach(content => {
-                content.style.display = 'none';
-            });
-            
-            // Reset all tab buttons
-            const allTabs = document.querySelectorAll('[id^="tab-"]');
-            allTabs.forEach(tab => {
-                tab.style.background = '#e2e8f0';
-                tab.style.color = '#64748b';
-            });
-            
-            // Show selected content
-            document.getElementById('content-' + tabName).style.display = 'block';
-            
-            // Highlight selected tab
-            document.getElementById('tab-' + tabName).style.background = '#3b82f6';
-            document.getElementById('tab-' + tabName).style.color = 'white';
-        }
-
         // Toggle Card Function (Accordion Style)
         function toggleCard(card) {
             // Close all other cards first
