@@ -1452,6 +1452,10 @@
     <!-- Accessibility Menu -->
     <div class="accessibility-menu" id="accessibilityMenu">
         <h4>🛠️ אפשרויות נגישות</h4>
+        <button class="accessibility-option" onclick="toggleTextToSpeech()" id="speechBtn">
+            <i class="fas fa-volume-up"></i>
+            הקראת טקסט
+        </button>
         <button class="accessibility-option" onclick="toggleHighContrast()" id="contrastBtn">
             <i class="fas fa-adjust"></i>
             ניגודיות גבוהה
@@ -1531,6 +1535,112 @@
         }
 
         // Accessibility Functions
+        // Text to Speech functionality
+        let speechEnabled = false;
+        let speechSynthesis = window.speechSynthesis;
+
+        function toggleTextToSpeech() {
+            const btn = document.getElementById('speechBtn');
+            speechEnabled = !speechEnabled;
+            btn.classList.toggle('active');
+            
+            if (speechEnabled) {
+                // Enable text to speech mode
+                document.body.style.cursor = 'help';
+                showSpeechInstructions();
+                addClickListenersForSpeech();
+                console.log('מצב הקראה הופעל - לחץ על טקסט כלשהו לשמיעה!');
+            } else {
+                // Disable text to speech mode
+                document.body.style.cursor = '';
+                removeClickListenersForSpeech();
+                speechSynthesis.cancel(); // Stop any current speech
+            }
+        }
+
+        function showSpeechInstructions() {
+            // Create temporary instruction message
+            const instruction = document.createElement('div');
+            instruction.id = 'speech-instruction';
+            instruction.style.cssText = `
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: #3b82f6;
+                color: white;
+                padding: 20px;
+                border-radius: 12px;
+                z-index: 10000;
+                text-align: center;
+                font-weight: bold;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            `;
+            instruction.innerHTML = '🔊 מצב הקראה פעיל!<br>לחץ על כל טקסט לשמיעה';
+            document.body.appendChild(instruction);
+            
+            // Remove after 3 seconds
+            setTimeout(() => {
+                if (document.getElementById('speech-instruction')) {
+                    document.body.removeChild(instruction);
+                }
+            }, 3000);
+        }
+
+        function addClickListenersForSpeech() {
+            // Add click listeners to text elements
+            const textElements = document.querySelectorAll('h1, h2, h3, h4, p, span, a, button, .service-title, .feature-title, .step-title');
+            textElements.forEach(element => {
+                element.addEventListener('click', handleSpeechClick);
+                element.style.transition = 'all 0.2s ease';
+            });
+        }
+
+        function removeClickListenersForSpeech() {
+            const textElements = document.querySelectorAll('h1, h2, h3, h4, p, span, a, button, .service-title, .feature-title, .step-title');
+            textElements.forEach(element => {
+                element.removeEventListener('click', handleSpeechClick);
+                element.style.backgroundColor = '';
+                element.style.outline = '';
+            });
+        }
+
+        function handleSpeechClick(event) {
+            if (!speechEnabled) return;
+            
+            event.preventDefault();
+            event.stopPropagation();
+            
+            const element = event.currentTarget;
+            const text = element.textContent || element.innerText;
+            
+            if (text.trim()) {
+                // Visual feedback
+                element.style.backgroundColor = 'rgba(59, 130, 246, 0.2)';
+                element.style.outline = '2px solid #3b82f6';
+                
+                // Stop any current speech
+                speechSynthesis.cancel();
+                
+                // Create and speak
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'he-IL'; // Hebrew language
+                utterance.rate = 0.8; // Slightly slower for clarity
+                utterance.pitch = 1;
+                utterance.volume = 1;
+                
+                // Remove visual feedback when speech ends
+                utterance.onend = () => {
+                    element.style.backgroundColor = '';
+                    element.style.outline = '';
+                };
+                
+                speechSynthesis.speak(utterance);
+                
+                console.log('מקריא:', text.substring(0, 50) + '...');
+            }
+        }
+
         function toggleAccessibilityMenu() {
             const menu = document.getElementById('accessibilityMenu');
             menu.classList.toggle('show');
