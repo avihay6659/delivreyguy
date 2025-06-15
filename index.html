@@ -145,7 +145,7 @@
             background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            padding: 60px 24px 24px;
+            padding: 20px 24px 24px;
             transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             z-index: 1001;
             box-shadow: 4px 0 20px rgba(0, 0, 0, 0.1);
@@ -918,6 +918,15 @@
 
             .service-card {
                 padding: 24px;
+            }
+
+            .service-card.expanded {
+                min-height: 280px;
+                padding: 20px;
+            }
+
+            .service-card.expanded .service-content {
+                max-height: 350px;
             }
 
             .cta-secondary {
