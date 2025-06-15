@@ -61,9 +61,13 @@
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            position: sticky;
+            position: fixed;
             top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
             z-index: 1000;
+            transition: all 0.3s ease;
         }
 
         .nav {
@@ -243,7 +247,7 @@
             background-position: center;
             background-repeat: no-repeat;
             background-attachment: fixed;
-            padding: 100px 0 40px;
+            padding: 180px 0 40px;
             min-height: 100vh;
             display: flex;
             align-items: flex-start;
@@ -928,7 +932,7 @@
             }
 
             .hero {
-                padding: 80px 0;
+                padding: 160px 0 80px;
             }
 
             .services,
