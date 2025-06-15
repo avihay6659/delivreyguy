@@ -751,21 +751,21 @@
             transform: scale(1.1);
         }
 
-        /* Floating WhatsApp Button */
+        /* Floating Order Button */
         .floating-whatsapp {
             position: fixed;
             bottom: 24px;
             right: 24px;
-            width: 160px;
+            width: auto;
             height: 56px;
-            background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+            background: linear-gradient(135deg, var(--secondary-blue) 0%, var(--accent-blue) 100%);
             color: white;
             border: none;
             border-radius: 28px;
-            font-size: 14px;
+            font-size: 15px;
             font-weight: 600;
             cursor: pointer;
-            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             z-index: 999;
             display: flex;
@@ -776,48 +776,38 @@
             opacity: 0;
             transform: translateY(100px);
             animation: none;
+            padding: 0 24px;
+            white-space: nowrap;
         }
 
         .floating-whatsapp.show {
             opacity: 1;
             transform: translateY(0);
-            animation: pulse 2s infinite;
+            animation: floatPulse 3s infinite;
         }
 
         .floating-whatsapp:hover {
             transform: translateY(-4px) scale(1.05);
-            box-shadow: 0 12px 35px rgba(37, 211, 102, 0.6);
+            box-shadow: 0 12px 35px rgba(59, 130, 246, 0.6);
         }
 
-        .floating-whatsapp i {
-            font-size: 18px;
-        }
-
-        @keyframes pulse {
+        @keyframes floatPulse {
             0%, 100% {
-                box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+                box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
             }
             50% {
-                box-shadow: 0 8px 25px rgba(37, 211, 102, 0.7), 0 0 0 10px rgba(37, 211, 102, 0.2);
+                box-shadow: 0 8px 25px rgba(59, 130, 246, 0.7), 0 0 0 10px rgba(59, 130, 246, 0.2);
             }
         }
 
         /* Mobile adjustments for floating button */
         @media (max-width: 768px) {
             .floating-whatsapp {
-                width: 56px;
-                height: 56px;
-                border-radius: 50%;
-                font-size: 0;
-                bottom: 90px;
-            }
-            
-            .floating-whatsapp span {
-                display: none;
-            }
-            
-            .floating-whatsapp i {
-                font-size: 22px;
+                font-size: 14px;
+                padding: 0 20px;
+                height: 50px;
+                bottom: 20px;
+                right: 20px;
             }
         }
 
@@ -1355,14 +1345,13 @@
         </div>
     </section>
 
-    <!-- Floating WhatsApp Button -->
+    <!-- Floating Order Button -->
     <a href="https://wa.me/972548912636?text=שלום,%20אני%20מעוניין%20להזמין%20שירותי%20משלוח%20של%20חסד%20משלוחים.%20אשמח%20לקבל%20פרטים%20נוספים%20ולתאם%20איסוף." 
        class="floating-whatsapp" 
        id="floatingWhatsApp"
        target="_blank"
-       aria-label="התחל הזמנת משלוח בוואטסאפ">
-        <i class="fab fa-whatsapp"></i>
-        <span>התחל הזמנה</span>
+       aria-label="התחל הזמנת משלוח">
+        התחל הזמנת משלוח
     </a>
 
     <!-- Accessibility Button -->
