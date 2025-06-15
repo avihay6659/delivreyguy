@@ -433,7 +433,7 @@
         }
 
         .service-card.expanded {
-            min-height: 260px;
+            min-height: 320px;
             box-shadow: var(--shadow-xl);
             border-color: rgba(59, 130, 246, 0.3);
             transform: translateY(-4px);
@@ -488,7 +488,7 @@
         }
 
         .service-card.expanded .service-content {
-            max-height: 200px;
+            max-height: 400px;
             opacity: 1;
             padding-top: 20px;
             border-top-color: var(--gray-200);
@@ -496,9 +496,11 @@
 
         .service-description {
             color: var(--text-secondary);
-            line-height: 1.7;
-            font-size: 14px;
+            line-height: 1.8;
+            font-size: 15px;
             text-align: right;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
 
         /* Features Section */
