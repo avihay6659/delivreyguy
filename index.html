@@ -402,6 +402,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 32px;
+            align-items: start;
         }
 
         .service-card {
@@ -414,6 +415,7 @@
             overflow: hidden;
             cursor: pointer;
             min-height: 160px;
+            align-self: start;
         }
 
         .service-card::before {
@@ -1031,6 +1033,7 @@
             .services-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 20px;
+                align-items: start;
             }
 
             .features-grid,
