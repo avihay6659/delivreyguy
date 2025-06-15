@@ -1094,14 +1094,30 @@
 
     <!-- Accessibility Menu -->
     <div class="accessibility-menu" id="accessibilityMenu">
-        <h4>אפשרויות נגישות</h4>
-        <button class="accessibility-option" onclick="toggleHighContrast()">
+        <h4>🛠️ אפשרויות נגישות</h4>
+        <button class="accessibility-option" onclick="toggleHighContrast()" id="contrastBtn">
             <i class="fas fa-adjust"></i>
             ניגודיות גבוהה
         </button>
-        <button class="accessibility-option" onclick="toggleLargeText()">
+        <button class="accessibility-option" onclick="toggleLargeText()" id="textSizeBtn">
             <i class="fas fa-font"></i>
             טקסט גדול
+        </button>
+        <button class="accessibility-option" onclick="toggleDyslexiaFont()" id="dyslexiaBtn">
+            <i class="fas fa-eye"></i>
+            גופן נוח לדיסלקציה
+        </button>
+        <button class="accessibility-option" onclick="toggleDarkMode()" id="darkModeBtn">
+            <i class="fas fa-moon"></i>
+            מצב לילה
+        </button>
+        <button class="accessibility-option" onclick="toggleFocusMode()" id="focusBtn">
+            <i class="fas fa-crosshairs"></i>
+            מצב מיקוד
+        </button>
+        <button class="accessibility-option" onclick="toggleReducedMotion()" id="motionBtn">
+            <i class="fas fa-pause"></i>
+            הפחתת אנימציות
         </button>
         <button class="accessibility-option" onclick="resetAccessibility()">
             <i class="fas fa-undo"></i>
@@ -1113,7 +1129,7 @@
         </button>
         <button class="accessibility-option" onclick="window.open('https://www.gov.il/he/departments/accessibility', '_blank')">
             <i class="fas fa-external-link-alt"></i>
-            מדריך נגישות
+            מדריך נגישות ממשלתי
         </button>
     </div>
 
@@ -1164,32 +1180,105 @@
         }
 
         function toggleHighContrast() {
-            document.body.classList.toggle('high-contrast');
-            localStorage.setItem('highContrast', document.body.classList.contains('high-contrast'));
+            const body = document.body;
+            const btn = document.getElementById('contrastBtn');
+            body.classList.toggle('high-contrast');
+            btn.classList.toggle('active');
+            localStorage.setItem('highContrast', body.classList.contains('high-contrast'));
         }
 
         function toggleLargeText() {
-            document.body.classList.toggle('large-text');
-            localStorage.setItem('largeText', document.body.classList.contains('large-text'));
+            const body = document.body;
+            const btn = document.getElementById('textSizeBtn');
+            body.classList.toggle('large-text');
+            btn.classList.toggle('active');
+            localStorage.setItem('largeText', body.classList.contains('large-text'));
+        }
+
+        function toggleDyslexiaFont() {
+            const body = document.body;
+            const btn = document.getElementById('dyslexiaBtn');
+            body.classList.toggle('dyslexia-friendly');
+            btn.classList.toggle('active');
+            localStorage.setItem('dyslexiaFont', body.classList.contains('dyslexia-friendly'));
+        }
+
+        function toggleDarkMode() {
+            const body = document.body;
+            const btn = document.getElementById('darkModeBtn');
+            body.classList.toggle('dark-mode');
+            btn.classList.toggle('active');
+            localStorage.setItem('darkMode', body.classList.contains('dark-mode'));
+        }
+
+        function toggleFocusMode() {
+            const body = document.body;
+            const btn = document.getElementById('focusBtn');
+            body.classList.toggle('focus-mode');
+            btn.classList.toggle('active');
+            localStorage.setItem('focusMode', body.classList.contains('focus-mode'));
+        }
+
+        function toggleReducedMotion() {
+            const body = document.body;
+            const btn = document.getElementById('motionBtn');
+            body.classList.toggle('reduced-motion');
+            btn.classList.toggle('active');
+            localStorage.setItem('reducedMotion', body.classList.contains('reduced-motion'));
         }
 
         function resetAccessibility() {
-            document.body.classList.remove('high-contrast', 'large-text');
+            const body = document.body;
+            const buttons = document.querySelectorAll('.accessibility-option');
+            
+            // Remove all accessibility classes
+            body.classList.remove('high-contrast', 'large-text', 'dyslexia-friendly', 'dark-mode', 'focus-mode', 'reduced-motion');
+            
+            // Remove active state from all buttons
+            buttons.forEach(btn => btn.classList.remove('active'));
+            
+            // Clear localStorage
             localStorage.removeItem('highContrast');
             localStorage.removeItem('largeText');
+            localStorage.removeItem('dyslexiaFont');
+            localStorage.removeItem('darkMode');
+            localStorage.removeItem('focusMode');
+            localStorage.removeItem('reducedMotion');
         }
 
         function focusToMain() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
+            document.querySelector('.hero h1').focus();
         }
 
         // Load accessibility preferences
         document.addEventListener('DOMContentLoaded', function() {
+            const body = document.body;
+            
+            // Load and apply saved preferences
             if (localStorage.getItem('highContrast') === 'true') {
-                document.body.classList.add('high-contrast');
+                body.classList.add('high-contrast');
+                document.getElementById('contrastBtn').classList.add('active');
             }
             if (localStorage.getItem('largeText') === 'true') {
-                document.body.classList.add('large-text');
+                body.classList.add('large-text');
+                document.getElementById('textSizeBtn').classList.add('active');
+            }
+            if (localStorage.getItem('dyslexiaFont') === 'true') {
+                body.classList.add('dyslexia-friendly');
+                document.getElementById('dyslexiaBtn').classList.add('active');
+            }
+            if (localStorage.getItem('darkMode') === 'true') {
+                body.classList.add('dark-mode');
+                document.getElementById('darkModeBtn').classList.add('active');
+            }
+            if (localStorage.getItem('focusMode') === 'true') {
+                body.classList.add('focus-mode');
+                document.getElementById('focusBtn').classList.add('active');
+            }
+            if (localStorage.getItem('reducedMotion') === 'true') {
+                body.classList.add('reduced-motion');
+                document.getElementById('motionBtn').classList.add('active');
             }
         });
 
