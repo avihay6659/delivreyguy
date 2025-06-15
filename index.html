@@ -617,11 +617,16 @@
             padding: 40px;
             text-align: center;
             transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: var(--white);
+            display: block;
         }
 
         .contact-card:hover {
-            background: rgba(255, 255, 255, 0.15);
-            transform: translateY(-4px);
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
         }
 
         .contact-icon {
@@ -648,11 +653,6 @@
             text-decoration: none;
             font-size: 16px;
             font-weight: 500;
-            transition: opacity 0.2s ease;
-        }
-
-        .contact-link:hover {
-            opacity: 0.8;
         }
 
         /* Accessibility */
@@ -1113,19 +1113,19 @@
                 </p>
             </div>
             <div class="contact-grid">
-                <div class="contact-card">
+                <a href="tel:0548912636" class="contact-card">
                     <div class="contact-icon">📞</div>
                     <h4 class="contact-title">התקשרו אלינו</h4>
-                    <a href="tel:0548912636" class="contact-link">054-891-2636</a>
+                    <div class="contact-link">054-891-2636</div>
                     <p style="margin-top: 8px; opacity: 0.8; font-size: 14px;">זמינים 24 שעות ביממה</p>
-                </div>
-                <div class="contact-card">
+                </a>
+                <a href="mailto:hesedmuzarim@gmail.com" class="contact-card">
                     <div class="contact-icon">✉️</div>
                     <h4 class="contact-title">שלחו מייל</h4>
-                    <a href="mailto:hesedmuzarim@gmail.com" class="contact-link">hesedmuzarim@gmail.com</a>
+                    <div class="contact-link">hesedmuzarim@gmail.com</div>
                     <p style="margin-top: 8px; opacity: 0.8; font-size: 14px;">מענה תוך שעות ספורות</p>
-                </div>
-                <div class="contact-card">
+                </a>
+                <div class="contact-card" style="cursor: default;">
                     <div class="contact-icon">🚚</div>
                     <h4 class="contact-title">שירות מיידי</h4>
                     <p style="color: white; font-size: 16px; font-weight: 500;">זמינים לשירותכם</p>
