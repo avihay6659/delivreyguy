@@ -751,6 +751,76 @@
             transform: scale(1.1);
         }
 
+        /* Floating WhatsApp Button */
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 160px;
+            height: 56px;
+            background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+            color: white;
+            border: none;
+            border-radius: 28px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-decoration: none;
+            opacity: 0;
+            transform: translateY(100px);
+            animation: none;
+        }
+
+        .floating-whatsapp.show {
+            opacity: 1;
+            transform: translateY(0);
+            animation: pulse 2s infinite;
+        }
+
+        .floating-whatsapp:hover {
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 12px 35px rgba(37, 211, 102, 0.6);
+        }
+
+        .floating-whatsapp i {
+            font-size: 18px;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+            }
+            50% {
+                box-shadow: 0 8px 25px rgba(37, 211, 102, 0.7), 0 0 0 10px rgba(37, 211, 102, 0.2);
+            }
+        }
+
+        /* Mobile adjustments for floating button */
+        @media (max-width: 768px) {
+            .floating-whatsapp {
+                width: 56px;
+                height: 56px;
+                border-radius: 50%;
+                font-size: 0;
+                bottom: 90px;
+            }
+            
+            .floating-whatsapp span {
+                display: none;
+            }
+            
+            .floating-whatsapp i {
+                font-size: 22px;
+            }
+        }
+
         .accessibility-menu {
             position: fixed;
             bottom: 90px;
@@ -1285,6 +1355,16 @@
         </div>
     </section>
 
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/972548912636?text=שלום,%20אני%20מעוניין%20להזמין%20שירותי%20משלוח%20של%20חסד%20משלוחים.%20אשמח%20לקבל%20פרטים%20נוספים%20ולתאם%20איסוף." 
+       class="floating-whatsapp" 
+       id="floatingWhatsApp"
+       target="_blank"
+       aria-label="התחל הזמנת משלוח בוואטסאפ">
+        <i class="fab fa-whatsapp"></i>
+        <span>התחל הזמנה</span>
+    </a>
+
     <!-- Accessibility Button -->
     <button class="accessibility-btn" onclick="toggleAccessibilityMenu()" aria-label="נגישות">
         <i class="fas fa-universal-access"></i>
@@ -1566,6 +1646,23 @@
             });
         }, observerOptions);
 
+        // Show floating WhatsApp button after hero section
+        const heroObserver = new IntersectionObserver((entries) => {
+            const floatingBtn = document.getElementById('floatingWhatsApp');
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) {
+                    // Hero is not visible, show floating button
+                    floatingBtn.classList.add('show');
+                } else {
+                    // Hero is visible, hide floating button
+                    floatingBtn.classList.remove('show');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '-100px 0px 0px 0px'
+        });
+
         // Observe elements for animation
         document.addEventListener('DOMContentLoaded', function() {
             const animatedElements = document.querySelectorAll('.service-card, .feature-card, .step, .contact-card');
@@ -1576,6 +1673,12 @@
                 el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
                 observer.observe(el);
             });
+
+            // Start observing hero section for floating button
+            const heroSection = document.querySelector('.hero');
+            if (heroSection) {
+                heroObserver.observe(heroSection);
+            }
         });
 
         // Phone number formatting
