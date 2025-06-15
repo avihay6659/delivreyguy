@@ -553,11 +553,24 @@
             grid-template-columns: repeat(3, 1fr);
             gap: 48px;
             margin-top: 60px;
+            position: relative;
         }
 
         .step {
             text-align: center;
             position: relative;
+            background: var(--white);
+            border: 2px solid var(--gray-200);
+            border-radius: 20px;
+            padding: 32px 20px;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+        }
+
+        .step:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--accent-blue);
         }
 
         .step-number {
@@ -574,6 +587,7 @@
             margin: 0 auto 24px;
             position: relative;
             z-index: 2;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
         }
 
         .step-title {
@@ -822,7 +836,7 @@
             }
 
             .step {
-                text-align: center;
+                padding: 20px 12px;
             }
 
             .step-number {
