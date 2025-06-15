@@ -467,35 +467,6 @@
             text-align: right;
         }
 
-        .expand-indicator {
-            position: absolute;
-            bottom: 16px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(59, 130, 246, 0.1);
-            border-radius: 50%;
-            width: 32px;
-            height: 32px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-            color: var(--accent-blue);
-            transition: all 0.3s ease;
-        }
-
-        .service-card:hover .expand-indicator {
-            background: var(--accent-blue);
-            color: var(--white);
-            transform: translateX(-50%) scale(1.1);
-        }
-
-        .service-card.expanded .expand-indicator {
-            transform: translateX(-50%) rotate(180deg);
-            background: var(--accent-blue);
-            color: var(--white);
-        }
-
         /* Features Section */
         .features {
             padding: 120px 0;
@@ -939,9 +910,6 @@
                             ✅ מתאים למשלוחים ללקוחות פרטיים ואירועים חשובים
                         </p>
                     </div>
-                    <div class="expand-indicator">
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
                 </div>
                 
                 <div class="service-card" onclick="toggleCard(this)">
@@ -954,9 +922,6 @@
                             ✅ מסמכים חשובים, חוזים, חבילות עד 20 ק"ג עם אישור מסירה<br><br>
                             ✅ שליחות רגילה או אקספרס (תוך שעה–שעתיים באזור הפעילות)
                         </p>
-                    </div>
-                    <div class="expand-indicator">
-                        <i class="fas fa-chevron-down"></i>
                     </div>
                 </div>
                 
@@ -971,9 +936,6 @@
                             ✅ גם שירותי איסוף דברי דואר מהסניף והבאתם לעסק
                         </p>
                     </div>
-                    <div class="expand-indicator">
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
                 </div>
                 
                 <div class="service-card" onclick="toggleCard(this)">
@@ -986,9 +948,6 @@
                             ✅ שליחות דיסקרטית, באחריות מלאה ועם תיעוד מסירה<br><br>
                             ✅ שירות מותאם לבעלי עסקים קטנים שלא מספיקים להגיע לבנק
                         </p>
-                    </div>
-                    <div class="expand-indicator">
-                        <i class="fas fa-chevron-down"></i>
                     </div>
                 </div>
             </div>
