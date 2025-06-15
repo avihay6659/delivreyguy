@@ -246,7 +246,6 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            background-attachment: fixed;
             padding: 180px 0 40px;
             min-height: 100vh;
             display: flex;
@@ -254,6 +253,15 @@
             justify-content: center;
             position: relative;
             overflow: hidden;
+        }
+
+        /* Fix background for mobile */
+        @media (max-width: 768px) {
+            .hero {
+                background-attachment: scroll !important;
+                background-size: cover;
+                background-position: center center;
+            }
         }
 
         .hero::before {
