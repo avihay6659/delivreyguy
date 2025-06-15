@@ -706,8 +706,12 @@
             .services-grid,
             .features-grid,
             .contact-grid {
-                grid-template-columns: 1fr;
-                gap: 24px;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+            }
+
+            .services-grid {
+                gap: 20px;
             }
 
             .service-card {
@@ -850,7 +854,7 @@
         <div class="container">
             <div class="section-header">
                 <span class="section-badge">השירותים שלנו</span>
-                <h2 class="section-title">פתרונות משלוחים מקצועיים</h2>
+                <h2 class="section-title">השירותים שלנו</h2>
                 <p class="section-subtitle">
                     אנו מספקים מגוון רחב של שירותי משלוחים מותאמים לצרכים השונים של הלקוחות שלנו
                 </p>
