@@ -970,6 +970,29 @@
             color: #ffffff !important;
         }
 
+        /* Dark mode footer fixes */
+        .dark-mode footer {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%) !important;
+        }
+
+        .dark-mode footer h4 {
+            color: #ffffff !important;
+        }
+
+        .dark-mode footer p, 
+        .dark-mode footer span,
+        .dark-mode footer a {
+            color: rgba(255, 255, 255, 0.8) !important;
+        }
+
+        .dark-mode footer a:hover {
+            color: #ffffff !important;
+        }
+
+        .dark-mode footer div[style*="background: rgba(255,255,255,0.05)"] {
+            background: rgba(255, 255, 255, 0.1) !important;
+        }
+
         /* Focus mode styles - Enhanced */
         .focus-mode *:focus {
             outline: 4px solid #ff4444 !important;
@@ -1512,11 +1535,11 @@
                 <div>
                     <h4 style="font-size: 18px; font-weight: 600; margin-bottom: 16px; color: white;">השירותים שלנו</h4>
                     <div style="display: flex; flex-direction: column; gap: 8px;">
-                        <span style="color: rgba(255,255,255,0.8); font-size: 14px;">🌸 משלוחי פרחים</span>
-                        <span style="color: rgba(255,255,255,0.8); font-size: 14px;">📦 שליחות מסמכים וחבילות</span>
-                        <span style="color: rgba(255,255,255,0.8); font-size: 14px;">📮 שירותי דואר לעסקים</span>
-                        <span style="color: rgba(255,255,255,0.8); font-size: 14px;">🏦 הפקדת כספים בבנקים</span>
-                        <span style="color: rgba(255,255,255,0.8); font-size: 14px;">🍷 משלוחי אלכוהול</span>
+                        <a href="#services" onclick="goToService(0)" style="color: rgba(255,255,255,0.8); text-decoration: none; font-size: 14px; cursor: pointer; transition: color 0.2s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">🌸 משלוחי פרחים</a>
+                        <a href="#services" onclick="goToService(1)" style="color: rgba(255,255,255,0.8); text-decoration: none; font-size: 14px; cursor: pointer; transition: color 0.2s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">📦 שליחות מסמכים וחבילות</a>
+                        <a href="#services" onclick="goToService(2)" style="color: rgba(255,255,255,0.8); text-decoration: none; font-size: 14px; cursor: pointer; transition: color 0.2s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">📮 שירותי דואר לעסקים</a>
+                        <a href="#services" onclick="goToService(3)" style="color: rgba(255,255,255,0.8); text-decoration: none; font-size: 14px; cursor: pointer; transition: color 0.2s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">🏦 הפקדת כספים בבנקים</a>
+                        <a href="#services" onclick="goToService(4)" style="color: rgba(255,255,255,0.8); text-decoration: none; font-size: 14px; cursor: pointer; transition: color 0.2s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">🍷 משלוחי אלכוהול</a>
                     </div>
                 </div>
             </div>
@@ -2047,6 +2070,38 @@
                 link.addEventListener('click', () => trackEvent('contact_click', link.href));
             });
         });
+
+        // Navigate to specific service and expand it
+        function goToService(serviceIndex) {
+            // First scroll to services section
+            document.querySelector('#services').scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+            
+            // Wait for scroll to complete, then expand the specific service
+            setTimeout(() => {
+                const serviceCards = document.querySelectorAll('.service-card');
+                
+                // Close all cards first
+                serviceCards.forEach(card => {
+                    card.classList.remove('expanded');
+                });
+                
+                // Open the specific card
+                if (serviceCards[serviceIndex]) {
+                    serviceCards[serviceIndex].classList.add('expanded');
+                    
+                    // Scroll a bit more to center the expanded card
+                    setTimeout(() => {
+                        serviceCards[serviceIndex].scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'center'
+                        });
+                    }, 400);
+                }
+            }, 800);
+        }
     </script>
 </body>
 </html>
